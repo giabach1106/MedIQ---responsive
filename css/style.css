@@ -276,28 +276,28 @@ img {
 }
 
 body.home .wrap-banner .owl-prev {
-    background-image: url('images/icon-left.png');
+    background-image: url('/pic/icon-left.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 10px;
 }
 
 body.home .wrap-banner .owl-next {
-    background-image: url('images/icon-right.png');
+    background-image: url('/pic/icon-right.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 10px;
 }
 
 body.home .wrap-dichvu .owl-prev {
-    background-image: url('images/icon-left.png');
+    background-image: url('/pic/icon-left.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 10px;
 }
 
 body.home .wrap-dichvu .owl-next {
-    background-image: url('images/icon-right.png');
+    background-image: url('/pic/icon-right.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 10px;
@@ -382,7 +382,7 @@ body.home .wrap-dichvu .owl-next {
 }
 
 .section-3 {
-    background-image: url('images/bg2.jpg');
+    background-image: url('/pic/bg2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -392,7 +392,7 @@ body.home .wrap-dichvu .owl-next {
 }
 
 .section-3 .blog-1 {
-    background-image: url('images/bg-1.svg');
+    background-image: url('/pic/bg-1.svg');
     background-repeat: no-repeat;
     background-position: center;
     height: 340px;
@@ -829,7 +829,7 @@ body.page-template-service .list-chuyen-khoa li {
 }
 
 .section-reason {
-    background: url(images/about/bg-reason.png) center no-repeat;
+    background: url(/pic/about/bg-reason.png) center no-repeat;
     background-size: cover;
     padding-top: 60px;
     padding-bottom: 60px;
@@ -1822,14 +1822,14 @@ body.page-template-faqs .card .card-header {
 }
 
 body.category .pagination a.next {
-    background-image: url(images/icon-right.png) !important;
+    background-image: url(/pic/icon-right.png) !important;
     background-size: 5px !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
 }
 
 body.category .pagination a.prev {
-    background-image: url(images/icon-left.png) !important;
+    background-image: url(/pic/icon-left.png) !important;
     background-size: 5px !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
