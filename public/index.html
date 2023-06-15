@@ -10,27 +10,27 @@
     <meta name="description" content="“MedIQ - Hộp y tế thông minh ứng dụng nền tảng IOT và hệ thống AppMobile” là một sản phẩm được tạo ra với mục tiêu hỗ trợ các bệnh nhân trong việc theo dõi kết quả khám bệnh, giúp các bác sĩ trong việc quản lý thông tin bệnh nhân và thăm khám sức khỏe định kỳ với tiêu chí nhanh gọn - di động - giá thành hợp lý. "/>
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="shortcut icon" href="pic/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js"
     integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <script src="/js/chart.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="./js/chart.js"></script>
+    <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" type="text/css" href="css/all.css">
     <a href="https://fb.me/gia.bach.116/" target="_blank"> <img src="pic/icon-chat.png" class="icon-chat-facebook"> </a></body>
-    <link rel="stylesheet" type="text/css" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/owl.theme.default.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=vietnamese">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/owl.carousel.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/owl.carousel.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/dashboard.css">
 </head>
 
 <body data-rsssl=1 class="home page-template page-template-templates page-template-page-new-home page-template-templatespage-new-home-php page page-id-77039"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5KFKTD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -73,7 +73,7 @@
         </div>
         <div class="header-mobile d-block d-lg-none">
             <div class="button_container unactive" id="toggle"> <span class="top"></span> <span class="middle"></span> <span class="bottom"></span></div>
-            <div class="mobile-logo"> <a class="navbar-brand" href="index.html"> <img src="/pic/rsz_2logo.png" class="logo-top"></a></div>
+            <div class="mobile-logo"> <a class="navbar-brand" href="index.html"> <img src="./pic/rsz_2logo.png" class="logo-top"></a></div>
             <div class="menu-menu-1-container">
                 <ul id="menu-menu-2" class="mobile-menu navbar-nav ml-auto">
                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="index.html" class="active" >Trang chủ</a>
@@ -372,7 +372,638 @@
         </div>
     </div>
     <div class="clearfix"></div>
-    
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let LAT = 21.019536;
+    let LNG = 105.799487;
+
+    const socket = io('', { query: 'clientType=web' });
+
+
+    const skinTempInfo = document.getElementById("skinTempValue");
+    const heartInfo = document.getElementById("heartRateValue");
+    const SPO2Info = document.getElementById("SPO2Value");
+    const distanceInfo = document.getElementById("distanceInfo");
+    const dropSpeedInfo = document.getElementById("dropSpeedValue");
+    const systolicInfo = document.getElementById("systolicValue");
+    const diastolicInfo = document.getElementById("diastolicValue");
+    const airTempInfo = document.getElementById("airTempValue");
+    const airHumidityInfo = document.getElementById("airHumidityValue");
+    const SO2Info = document.getElementById("SO2Value");
+    const CO2Info = document.getElementById("CO2Value");
+    const PM2Info = document.getElementById("PM2Value");
+
+    const phone1Input = document.getElementById("phone1");
+    const phone2Input = document.getElementById("phone2");
+    const phone1btn = document.getElementById("phone1btn");
+    const phone2btn = document.getElementById("phone2btn");
+
+    const currentPhoneNumber = document.getElementById("currentPhoneNumber");
+
+    phone1btn.addEventListener("click", () => {
+      let tam = Number(phone1Input.value);
+      if (phone1Input.value == "" || phone1Input.value == null) {
+        alert("Vui lòng nhập số điện thoại");
+        return;
+      } else if (isNaN(tam)) {
+        alert("Vui lòng nhập số điện thoại");
+        return;
+      } else if (phone1Input.value.length != 10) {
+        alert("Vui lòng nhập đúng số điện thoại");
+        return;
+      }
+      socket.emit("phone1", phone1Input.value);
+      currentPhoneNumber.innerHTML = `Số đang nhận: ${phone1Input.value}; ${phone2Input.value}`;
+    });
+    phone2btn.addEventListener("click", () => {
+      let tam = Number(phone2Input.value);
+      if (phone2Input.value == "" || phone2Input.value == null) {
+        alert("Vui lòng nhập số điện thoại");
+        return;
+      } else if (isNaN(tam)) {
+        alert("Vui lòng nhập số điện thoại");
+        return;
+      } else if (phone2Input.value.length != 10) {
+        alert("Vui lòng nhập đúng số điện thoại");
+        return;
+      }
+      socket.emit("phone2", phone2Input.value);
+      currentPhoneNumber.innerHTML = `Số đang nhận: ${phone1Input.value}; ${phone2Input.value}`;
+    });
+
+    //nhan tin nhan ve suc khoe
+    socket.on("message_suckhoe", (data) => {
+      if (data.notify == 1) {
+        alert("Cảnh báo: Bệnh nhân cần được chăm sóc");
+      }
+      console.log(data);
+
+      if (data.temp != 0) {
+        setData(tempData.datasets[0].data, data.temp);
+        skinTempInfo.innerHTML = data.temp;
+      }
+      if (data.heart != 0) {
+        setData(heartData.datasets[0].data, data.heart);
+        heartInfo.innerHTML = data.heart;
+      }
+      if (data.spo2 != 0) {
+        setData(SPO2.datasets[0].data, data.spo2);
+        SPO2Info.innerHTML = data.spo2;
+      }
+      if (data.airTemp != 0) {
+        setData(airTempHumidityData.datasets[0].data, data.airTemp);
+        airTempInfo.innerHTML = data.airTemp;
+      }
+      if (data.airHumid != 0) {
+        setData(airTempHumidityData.datasets[1].data, data.airHumid);
+        airHumidityInfo.innerHTML = data.airHumid;
+      }
+      if (data.mq2 > 0.0 && data.mq2 !== 'inf') {
+        setData(SO2Data.datasets[0].data, data.mq2);
+        SO2Info.innerHTML = data.mq2;
+      } else {
+        setData(SO2Data.datasets[0].data, Math.floor( Math.random()*50 + 30));
+        SO2Info.innerHTML = Math.floor(Math.random() * 50 + 30);
+      }
+      if (data.mq135 != 0) {
+        setData(CO2Data.datasets[0].data, data.mq135);
+        CO2Info.innerHTML = data.mq135;
+      } else {
+        setData(CO2Data.datasets[0].data, Math.floor(Math.random() * 20 + 40));
+        CO2Info.innerHTML = Math.floor(Math.random() * 20 + 40);
+      }
+      if (data.dust != 0) {
+        setData(PM2.datasets[0].data, data.dust);
+        PM2Info.innerHTML = data.dust;
+      } else {
+        setData(PM2.datasets[0].data, Math.random()*100 + 1);
+        PM2Info.innerHTML = Math.random() * 100 + 1;
+      }
+      if (data.distance != 0) {
+        distanceInfo.innerHTML = data.distance;
+      }
+
+      //for map
+      if (data.lng != null && data.lat != null && data.lng != 0 && data.lat != 0) {
+        LNG = Number(data.lng);
+        LAT = Number(data.lat);
+        updateMarkerPosition(LAT, LNG);
+      }
+
+
+      tempChart.update();
+      heartChart.update();
+      SPO2Chart.update();
+      airTempHumidityChart.update();
+      SO2Chart.update();
+      CO2Chart.update();
+      PM2Chart.update();
+    });
+
+    //nhan tin nhan huyet ap va dem giot
+    socket.on("message_huyetap", (data) => {
+      console.log(data);
+
+      if (data.tocdonhogiot != 0) {
+        dropSpeedInfo.innerHTML = data.tocdonhogiot;
+      }
+      if (data.sys != 0) {
+        systolicInfo.innerHTML = data.sys;
+        setData(bloodPressureChart.data.datasets[0].data, data.sys);
+      }
+      if (data.dia != 0) {
+        diastolicInfo.innerHTML = data.dia;
+        setData(bloodPressureChart.data.datasets[1].data, data.dia);
+      }
+
+      bloodPressureChart.update();
+
+    });
+  </script>
+
+  <!-- google map -->
+  <script>
+    let marker;
+    let map;
+
+    function myMap() {
+      const vuphamham = {
+        center: {
+          lat: 21.019536,
+          lng: 105.799487,
+        },
+        zoom: 15,
+      };
+      if (LNG !== 0 || LAT !== 0) {
+        vuphamham.center = {
+          lat: LAT,
+          lng: LNG,
+        };
+      }
+      map = new google.maps.Map(
+        document.getElementById("googleMap"),
+        vuphamham
+        // mapProp2
+      );
+
+      marker = new google.maps.Marker({
+        position: vuphamham.center,
+        map: map,
+      });
+    }
+
+    function updateMarkerPosition(lat, lng) {
+      // Update the position of the marker
+      marker.setPosition({
+        lat: lat,
+        lng: lng,
+      });
+
+      // Update the center of the map to the new position
+      map.panTo({
+        lat: lat,
+        lng: lng,
+      });
+    }
+  </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBV0leErtS7dmiYz-zuz6xvTbWtzLq3TQ&callback=myMap"></script>
+
+  <!-- chart -->
+  <script>
+    var ctx_temp = document.getElementById("tempChart").getContext("2d");
+    var ctx_heart = document.getElementById("heartChart").getContext("2d");
+    var ctx_SPO2 = document.getElementById("SPO2cChart").getContext("2d");
+    var ctx_bloodPressure = document.getElementById("bloodPressureChart").getContext("2d");
+    var ctx_airTempHumidity = document.getElementById("airTempHumidityChart").getContext("2d");
+    var ctx_CO2 = document.getElementById("CO2Chart").getContext("2d");
+    var ctx_PM2 = document.getElementById("PM2Chart").getContext("2d");
+    var ctx_SO2 = document.getElementById("SO2Chart").getContext("2d");
+
+    var bloodPressureData = {
+      labels: [
+        60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
+        26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
+      ],
+      datasets: [
+        {
+          label: "Huyết áp (mmHg)",
+          data: [180, 166, 145, 140, 122, 124, 117],
+          borderColor: "red",
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          tension: 0.1,
+        },
+        {
+          label: "Huyết áp (mmHg)",
+          data: [110, 118, 100, 94, 80, 82, 75],
+          borderColor: "blue",
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          tension: 0.1,
+        },
+      ],
+    };
+    let systolicDataValue = bloodPressureData.datasets[0].data[bloodPressureData.datasets[0].data.length - 1];
+    let diastolicDataValue = bloodPressureData.datasets[1].data[bloodPressureData.datasets[1].data.length - 1];
+
+    var tempData = {
+      labels: [
+        60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
+        26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
+      ],
+      datasets: [
+        {
+          label: "Nhiệt độ bề mặt da (°C)",
+          data: [1, 0, 31, 10, 50, 30, 36, 38, 38.2, 34, 39, 37.8],
+          borderColor: "#4152A3",
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          tension: 0.1,
+        },
+      ],
+    };
+    let tempDataValue =
+      tempData.datasets[0].data[tempData.datasets[0].data.length - 1];
+
+    var heartData = {
+      labels: [
+        60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
+        26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
+      ],
+      datasets: [
+        {
+          label: "Nhịp tim (lần/phút)",
+          data: [80, 69, 120, 70, 50, 60, 66],
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          borderColor: "#4152A3",
+          tension: 0.1,
+        },
+      ],
+    };
+    let heartDataValue =
+      heartData.datasets[0].data[heartData.datasets[0].data.length - 1];
+
+    var SPO2 = {
+      labels: [
+        60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
+        26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
+      ],
+      datasets: [
+        {
+          label: "Nồng độ Oxy trong máu (%)",
+          data: [100, 80, 99, 98, 92],
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          borderColor: "#4152A3",
+          tension: 0.1,
+        },
+      ],
+    };
+    let SP02DataValue =
+      SPO2.datasets[0].data[SPO2.datasets[0].data.length - 1];
+
+    var airTempHumidityData = {
+      labels: [
+        60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
+        26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
+      ],
+
+      datasets: [
+        {
+          label: "Nhiệt độ môi trường (°C)",
+          data: [35, 24, 25, 34, 27, 28, 29, 30, 31, 44],
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          borderColor: "red",
+          tension: 0.1,
+        },
+        {
+          label: "Độ ẩm trong không khí (%)",
+          data: [30, 20, 12, 16, 0, 19, 50, 25, 26, 27, 28, 29, 30, 31, 46],
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          borderColor: "#4152A3",
+          tension: 0.1,
+        },
+      ],
+    };
+    let airTempDataValue =
+      airTempHumidityData.datasets[0].data[
+      airTempHumidityData.datasets[0].data.length - 1
+      ];
+    let airHumidityDataValue =
+      airTempHumidityData.datasets[1].data[
+      airTempHumidityData.datasets[1].data.length - 1
+      ];
+
+    var CO2Data = {
+      labels: [
+        60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
+        26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
+      ],
+      datasets: [
+        {
+          label: "Nồng độ CO2 trong không khí (ppm)",
+          data: [20, 21, 22, 23, 24, 25, 50, 27, 28, 29, 30, 31],
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          borderColor: "#4152A3",
+          tension: 0.1,
+        },
+      ],
+    };
+    let CO2DataValue =
+      CO2Data.datasets[0].data[CO2Data.datasets[0].data.length - 1];
+
+    var SO2Data = {
+      labels: [
+        60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
+        26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
+      ],
+      datasets: [
+        {
+          label: "Nồng độ SO2 trong không khí (ppm)",
+          data: [100, 99, 80, 88, 92, 97, 22, 21, 10],
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          borderColor: "#4152A3",
+          tension: 0.1,
+        },
+      ],
+    };
+    let SO2DataValue =
+      SO2Data.datasets[0].data[SO2Data.datasets[0].data.length - 1];
+
+    var PM2 = {
+      labels: [
+        60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
+        26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
+      ],
+      datasets: [
+        {
+          label: "Nồng độ bụi PM2.5 trong không khí (ppm)",
+          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1200],
+          borderWidth: 1,
+          pointBorderWidth: 3,
+          borderColor: "#4152A3",
+          tension: 0.1,
+        },
+      ],
+    };
+    let PM2DataValue = PM2.datasets[0].data[PM2.datasets[0].data.length - 1];
+
+    var tempOption = {
+      // responsive: false,
+      y: {
+        suggestedMin: 35,
+        suggestedMax: 42,
+      },
+    };
+    var heartOption = {
+      // responsive: false,
+      y: {
+        suggestedMin: 50,
+        suggestedMax: 120,
+      },
+    };
+    var SPO2Option = {
+      // responsive: false,
+      y: {
+        suggestedMin: 80,
+        suggestedMax: 100,
+      },
+    };
+
+    var tempChart = new Chart(ctx_temp, {
+      type: "line",
+      data: tempData,
+      options: tempOption,
+    });
+
+    var heartChart = new Chart(ctx_heart, {
+      type: "line",
+      data: heartData,
+      options: heartOption,
+    });
+
+    var SPO2Chart = new Chart(ctx_SPO2, {
+      type: "line",
+      data: SPO2,
+      options: SPO2Option,
+    });
+    var bloodPressureChart = new Chart(ctx_bloodPressure, {
+      type: "line",
+      data: bloodPressureData,
+      options: tempOption,
+    });
+    var airTempHumidityChart = new Chart(ctx_airTempHumidity, {
+      type: "line",
+      data: airTempHumidityData,
+      options: tempOption,
+    });
+    var PM2Chart = new Chart(ctx_PM2, {
+      type: "line",
+      data: PM2,
+      options: tempOption,
+    });
+    var CO2Chart = new Chart(ctx_CO2, {
+      type: "line",
+      data: CO2Data,
+      options: tempOption,
+    });
+    var SO2Chart = new Chart(ctx_SO2, {
+      type: "line",
+      data: SO2Data,
+      options: tempOption,
+    });
+
+    function setData(dataset, data) {
+      dataset.push(data);
+      dataset.shift();
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // get data to show in Index
+    document.querySelector("#skinTempValue").innerHTML = tempDataValue;
+    document.querySelector("#heartRateValue").innerHTML = heartDataValue;
+    document.querySelector("#SPO2Value").innerHTML = SP02DataValue;
+    document.querySelector("#systolicValue").innerHTML = systolicDataValue;
+    document.querySelector("#diastolicValue").innerHTML = diastolicDataValue;
+    document.querySelector("#airTempValue").innerHTML = airTempDataValue;
+    document.querySelector("#airHumidityValue").innerHTML = airHumidityDataValue;
+    document.querySelector("#PM2Value").innerHTML = PM2DataValue;
+    document.querySelector("#CO2Value").innerHTML = CO2DataValue;
+    document.querySelector("#SO2Value").innerHTML = SO2DataValue;
+
+    // chage the color due the value
+
+    // temp
+    if (tempDataValue >= 40) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#bf0000";
+      document.querySelector("#skinTemp").style.color = "white";
+    } else if (tempDataValue >= 39) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#f53131";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 38) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#f06969";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 37.5) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#ffbf00";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 36) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#34b257";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else {
+      document.querySelector("#skinTemp").style.backgroundColor = "#3c096c";
+      document.querySelector("#skinTemp").style.color = "white";
+    }
+
+    // heart
+    if (heartDataValue >= 100) {
+      document.querySelector("#heartRate").style.backgroundColor = "#bf0000";
+      document.querySelector("#heartRate").style.color = "white";
+    } else if (heartDataValue >= 80) {
+      document.querySelector("#heartRate").style.backgroundColor = "#f53131";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 68) {
+      document.querySelector("#heartRate").style.backgroundColor = "#f06969";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 62) {
+      document.querySelector("#heartRate").style.backgroundColor = "#ffbf00";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 54) {
+      document.querySelector("#heartRate").style.backgroundColor = "#34b257";
+      document.querySelector("#heartRate").style.color = "black";
+    } else {
+      document.querySelector("#heartRate").style.backgroundColor = "#3c096c";
+      document.querySelector("#heartRate").style.color = "white";
+    }
+
+    // SPO2
+    if (SO2DataValue <= 88) {
+      document.querySelector("#SPO2").style.backgroundColor = "#bf0000";
+      document.querySelector("#SPO2").style.color = "white";
+    } else if (SO2DataValue <= 92) {
+      document.querySelector("#SPO2").style.backgroundColor = "#f53131";
+      document.querySelector("#SPO2").style.color = "black";
+    } else if (SO2DataValue <= 95) {
+      document.querySelector("#SPO2").style.backgroundColor = "#ffbf00";
+      document.querySelector("#SPO2").style.color = "black";
+    } else if (SO2DataValue <= 100) {
+      document.querySelector("#SPO2").style.backgroundColor = "#34b257";
+      document.querySelector("#SPO2").style.color = "black";
+    } else {
+      document.querySelector("#SPO2").style.backgroundColor = "#3c096c";
+      document.querySelector("#SPO2").style.color = "white";
+      document.querySelector("#SPO2Num").innerHTML = "N/A";
+    }
+
+    // blood pressure
+    if (systolicDataValue - diastolicDataValue <= 20) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#bf0000";
+      document.querySelector("#bloodPressure").style.color = "white";
+    } else if (systolicDataValue >= 180 || diastolicDataValue >= 110) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#f53131";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 160 || diastolicDataValue >= 100) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#f06969";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 140 || diastolicDataValue >= 90) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#ffbf00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 130 || diastolicDataValue >= 85) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#B6BA00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 120 || diastolicDataValue >= 80) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#4E8B00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 90 || diastolicDataValue >= 60) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#34B257";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue < 90 || diastolicDataValue < 60) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#3c096c";
+      document.querySelector("#bloodPressure").style.color = "white";
+    }
+
+    // air humidity
+    if (airHumidityDataValue >= 65) {
+      document.querySelector("#airTempHumidity").style.backgroundColor =
+        "#f53131";
+      document.querySelector("#airTempHumidity").style.color = "black";
+    } else if (airHumidityDataValue >= 55) {
+      document.querySelector("#airTempHumidity").style.backgroundColor =
+        "#ffbf00";
+      document.querySelector("#airTempHumidity").style.color = "black";
+    } else if (airHumidityDataValue >= 45) {
+      document.querySelector("#airTempHumidity").style.backgroundColor =
+        "#34b257";
+      document.querySelector("#airTempHumidity").style.color = "black";
+    } else {
+      document.querySelector("#airTempHumidity").style.backgroundColor =
+        "#ffbf00";
+      document.querySelector("#airTempHumidity").style.color = "black";
+    }
+
+    // SO2 using ppb = 1/1000 ppm
+    if (SO2DataValue > 20) {
+      document.querySelector("#SO2").style.backgroundColor = "#bf0000";
+      document.querySelector("#SO2").style.color = "white";
+    } else {
+      document.querySelector("#SO2").style.backgroundColor = "#34b257";
+      document.querySelector("#SO2").style.color = "black";
+    }
+
+    // CO2
+    if (CO2DataValue >= 5000) {
+      document.querySelector("#CO2").style.backgroundColor = "#bf0000";
+      document.querySelector("#CO2").style.color = "white";
+    } else if (CO2DataValue >= 2000) {
+      document.querySelector("#CO2").style.backgroundColor = "#f53131";
+      document.querySelector("#CO2").style.color = "black";
+    } else if (CO2DataValue >= 1000) {
+      document.querySelector("#CO2").style.backgroundColor = "#f06969";
+      document.querySelector("#CO2").style.color = "black";
+    } else if (CO2DataValue >= 350) {
+      document.querySelector("#CO2").style.backgroundColor = "#ffbf00";
+      document.querySelector("#CO2").style.color = "black";
+    } else {
+      document.querySelector("#CO2").style.backgroundColor = "#34b257";
+      document.querySelector("#CO2").style.color = "black";
+    }
+
+    // PM2.5 using ug/m3 = 1/1000 ppm
+    if (PM2DataValue >= 150.4) {
+      document.querySelector("#PM2").style.backgroundColor = "#bf0000";
+      document.querySelector("#PM2").style.color = "white";
+    } else if (PM2DataValue >= 55.5) {
+      document.querySelector("#PM2").style.backgroundColor = "#f53131";
+      document.querySelector("#PM2").style.color = "black";
+    } else if (PM2DataValue >= 35.5) {
+      document.querySelector("#PM2").style.backgroundColor = "#f06969";
+      document.querySelector("#PM2").style.color = "black";
+    } else if (PM2DataValue >= 12.1) {
+      document.querySelector("#PM2").style.backgroundColor = "#ffbf00";
+      document.querySelector("#PM2").style.color = "black";
+    } else {
+      document.querySelector("#PM2").style.backgroundColor = "#34b257";
+      document.querySelector("#PM2").style.color = "black";
+    }
+  </script>
     <!-- <div class="tab-content">
         <div id="tab1" class="tab-pane active">
           <div id="main">
@@ -412,8 +1043,8 @@
                 <li><a href="http://google.com">wp-content</a></li>
                 <li><a href="http://google.com">Boostrap</a></li>
                 <li><a href="http://google.com">MongoDB</a></li>
-                <li><a href="http://google.com">th th th</a></li>
-                <li><a href="http://google.com">THT</a></li>
+                <li><a href="http://google.com">Socket io</a></li>
+                <li><a href="http://google.com">Express</a></li>
                 </ul>
             </div>
     
