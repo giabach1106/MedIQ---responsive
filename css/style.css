@@ -3666,4 +3666,114 @@ body.page-template-homepage-beta a.more {
     font-size: 14pt;
     font-weight: bold;
   }
-  
+  .navbar {
+    padding: 0;
+    align-items: flex-end !important;
+    margin-top: -40px
+}
+
+.sticky .navbar {
+    align-items: center !important
+}
+
+.wrap-menu {
+    padding: 10px 0
+}
+
+.navbar-brand {
+    padding-bottom: 10px
+}
+
+.main-menu>li {
+    position: relative;
+    padding: 10px 0
+}
+
+.main-menu li.current-menu-item a {
+    color: #00BB6D
+}
+
+.main-menu li.current-menu-parent a {
+    color: #00BB6D
+}
+
+.main-menu .sub-menu {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 300px;
+    background: #fff;
+    border-top: 2px solid #00BB6D;
+    list-style: none;
+    padding-left: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    opacity: 0
+}
+
+.main-menu>li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10
+}
+
+.main-menu>li.mega .sub-menu {
+    width: 800px
+}
+
+.main-menu>li.mega .sub-menu {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.main-menu>li.mega .sub-menu li {
+    width: 33.3333%;
+    border-bottom: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0
+}
+
+.main-menu>li .sub-menu li {
+    border-bottom: 1px solid #f0f0f0
+}
+
+.main-menu>li>a {
+    padding: 5px 15px;
+    border-right: 1px solid #00BB6D
+}
+
+.main-menu>li:last-child>a {
+    border-right: none
+}
+
+.wrap-menu #navbarSupportedContent {
+    justify-content: flex-end
+}
+
+.main-menu .sub-menu li a {
+    display: block;
+    padding: 12px 17px;
+    color: #2F4857;
+    font-size: 14px
+}
+
+.main-menu .sub-menu li:nth-child(3) {
+    border-right: 1px solid #f0f0f0
+}
+
+.main-menu .sub-menu li:nth-child(6) {
+    border-right: 1px solid #f0f0f0
+}
+
+.main-menu .sub-menu li:nth-child(9) {
+    border-right: 1px solid #f0f0f0
+}
+
+.main-menu .sub-menu li:nth-child(12) {
+    border-right: 1px solid #f0f0f0
+}
+
+.main-menu .sub-menu li a:hover {
+    background: #00BB6D;
+    color: #fff !important;
+    border-color: #00BB6D
+}
