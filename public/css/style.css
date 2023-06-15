@@ -3452,18 +3452,18 @@ body.page-template-homepage-beta a.more {
     display: block;
   }
   
-  #tab2, #tab3, #tab4 {
+  #tab2, #tab3, #tab4, #tab5 {
     width: 80%;
     margin: auto;
     text-align: justify;
     min-height: 65vh;
   }
-  #tab2 p, #tab3 p, #tab4 p {
+  #tab2 p, #tab3 p, #tab4 p, #tab5 p {
     font-size: 1.2vw;
     line-height: 1.5vw;
     margin: 0.5vw 0;
   }
-  #tab2 h3, #tab3 h3, #tab4 h3 {
+  #tab2 h3, #tab3 h3, #tab4 h3 , #tab5 h3{
     font-size: 1.5vw;
     font-weight: bold;
     margin: 1vw 0;
@@ -3481,7 +3481,20 @@ body.page-template-homepage-beta a.more {
     outline-offset: -0.3vw;
   
   }
-  
+  .page-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+    line-height: 40px;
+    /* or 48px */
+    border-bottom: 0.5px solid #000000;
+    padding-bottom: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    /* A12 */
+    color: #2F4857;
+}
   #inIndex {
     padding: 4vh 2vw;
     width: 100%;
