@@ -3228,7 +3228,21 @@ body.page-template-homepage-beta a.more {
     color: #00BB6D !important;
 }
 
+#googleMap {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+}
 
+#phone1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+#phone2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
 
 /* footer */
 .site-footer
@@ -3394,3 +3408,4 @@ body.page-template-homepage-beta a.more {
     font-weight:600
   }
 }
+

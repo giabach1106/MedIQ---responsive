@@ -13,6 +13,15 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js"
+    integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="/js/chart.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -168,6 +177,7 @@
 </head>
 
 <body data-rsssl=1 class="home page-template page-template-templates page-template-page-new-home page-template-templatespage-new-home-php page page-id-77039"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5KFKTD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
     <div class="outer">
         <div class="wrap-header d-none d-lg-block">
             <div class="top-info text-right">
@@ -185,23 +195,17 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <div class="menu-menu-1-container">
                                 <ul id="menu-menu-1" class="main-menu navbar-nav ml-auto">
-                                    <li id="menu-item-947" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="gioi-thieu/">Giới thiệu</a>
+                                    <li id="menu-item-947" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="#tab1" class="active" >Trang chủ</a>
                                     </li>
-                                    <li id="menu-item-955" class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955"><a href="dich-vu-y-te/">Dịch vụ y tế</a>
+                                    <li id="menu-item-955" class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955"><a href="#tab2">Giới thiệu</a>
                                         
                                     </li>
-                                    <li id="menu-item-84590" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84590"><a href="doi-ngu-bac-sy/">Đội ngũ bác sĩ</a></li>
-                                    <li id="menu-item-1111" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a href="tu-van-suc-khoe/">Tư vấn sức khỏe</a>
+                                    <li id="menu-item-1111" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a href="#tab3">Các chỉ số đo</a>
                                         
                                     </li>
-                                    <li id="menu-item-1106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a href="tin-tuc-va-uu-dai/">Tin tức và ưu đãi</a>
-                                        
+                                    <li id="menu-item-1106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a href="#tab4">Tin tức</a>
                                     </li>
-                                    <li id="menu-item-32073" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32073"><a href="huong-dan-khach-hang/">Hướng dẫn khách hàng</a>
-                                        
-                                    </li>
-                                    <li id="menu-item-1103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103"><a href="lien-he-hop-tac/">Liên hệ</a>
-                                        
+                                    <li id="menu-item-1103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103"><a href="#tab5">Liên hệ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -215,18 +219,14 @@
             <div class="mobile-logo"> <a class="navbar-brand" href="index.html"> <img src="/pic/rsz_2logo.png" class="logo-top"></a></div>
             <div class="menu-menu-1-container">
                 <ul id="menu-menu-2" class="mobile-menu navbar-nav ml-auto">
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="gioi-thieu/">Giới thiệu</a>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="#tab1" class="active" >Trang chủ</a>
                     </li>
-                    <li class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955"><a href="dich-vu-y-te/">Dịch vụ y tế</a>
+                    <li class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955"><a href="#tab2">Giới thiệu</a>
                     </li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84590"><a href="doi-ngu-bac-sy/">Đội ngũ bác sĩ</a></li>
-                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a href="tu-van-suc-khoe/">Tư vấn sức khỏe</a>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84590"><a href="#tab3">Các chỉ số đo</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a href="#tab4">Tin tức</a>
                     </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a href="tin-tuc-va-uu-dai/">Tin tức và ưu đãi</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32073"><a href="huong-dan-khach-hang/">Hướng dẫn khách hàng</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103"><a href="lien-he-hop-tac/">Liên hệ</a>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a href="#tab5">Liên hệ</a>
                     </li>
                 </ul>
             </div>
@@ -242,74 +242,39 @@
         <div class="section-1">
             <div class="container">
                 <div class="content">
-                    <div data-toggle="modal" data-target="#exampleModal" class="item item-1"> <img class="normal" src="pic/icon-3.svg"> <img class="active" src="pic/icon-3-active.svg" class="active"> <span class="pl-3">Giờ làm việc</span></div>
+                    <div data-toggle="modal" data-target="#exampleModal" class="item item-1"> <img class="normal" src="pic/icon-3.svg"> <img class="active" src="pic/icon-3-active.svg" class="active"> <span class="pl-3">Câu hỏi nghiên cứu</span></div>
                     <div
                         class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content"> <button class="modal-close modal-toggle " data-dismiss="modal" aria-label="Close">X</button>
                                 <div class="modal-body">
-                                    <h2 class="modal-title">Giờ làm việc</h2>
-                                    <p> Với mong muốn mang lại cho quý khách hàng các dịch vụ y tế chất lượng cao, phục vụ kịp thời nhất, Bệnh viện Hồng Ngọc áp dụng giờ làm việc như sau:</p>
-                                    <div class="list-time">
-                                        <p> <span class="text-left"> Bệnh viện Đa khoa Hồng Ngọc 55 Yên Ninh</span> <span class="text-right">24/7</span></p>
-                                        <p> <span class="text-left">Phòng khám Đa khoa Hồng Ngọc Keangnam</span> <span class="text-right">7h30 - 17h00</span></p>
-                                        <p> <span class="text-left">Phòng khám Đa khoa Hồng Ngọc Savico</span> <span class="text-right">7h00 - 19h00 </span></p>
-                                        <p> <span class="text-left">Phòng khám Đa khoa Hồng Ngọc Nguyễn Tuân</span> <span class="text-right">8h00 - 18h00</span></p>
-                                        <p> <span class="text-left">Phòng khám Đa khoa Hồng Ngọc Tố Hữu</span> <span class="text-right">8h00 - 18h00</span></p>
-                                        <p> <span class="text-left">Phòng khám Đa khoa Hồng Ngọc Tây Hồ</span> <span class="text-right">8h00 - 18h00</span></p>
-                                        <p> <span class="text-left">Cấp cứu 24/24</span> <span class="text-right"></span></p>
-                                        <p> <span class="text-left">Lưu ý: Giờ làm việc hành chính từ 6h30 -17h00. Ngoài giờ hành chính giá dịch vụ sẽ tăng 20%</span> <span class="text-right"></span></p>
-                                        <div class="contact"> <a href="tel: (+84)2473008866"><img src="pic/phone.png"> (+84) 24 7300 8866 </a> <span> Mọi thông tin chi tiết xin liên lạc với Hotline của Bệnh viện Hồng Ngọc. </span></div>
-                                    </div>
+                                    <h2 class="modal-title">Câu hỏi nghiên cứu</h2>
+                                    <p> Trong đề tài này, chúng em nghiên cứu về câu hỏi:</p>
+                                    
+                                        <p> <span > Thiết kế thiết bị như thế nào để hỗ trợ bệnh nhân theo dõi được sức khỏe thông qua các chỉ số: Nhiệt độ, nhịp tim, SPO2, huyết áp,…?</span> <span class="text-right"></span></p>
+                                        <p> <span class="text-left"> Làm thế nào để quá trình đo, các chỉ số tự động cập nhật lên “hồ sơ cá nhân” trên webserver của từng người sử dụng với mục đích theo dõi và đưa ra những dự báo phù hợp với sức khỏe người dùng?</span></p>
+                                        <p> <span class="text-left">Có thể tạo ra được hệ thống web lưu trữ các chỉ số sức khỏe của nhiều bệnh nhân, tạo thành các hồ sơ cá nhân, giúp bác sĩ có thể chăm sóc từ xa được nhiều người một lúc một cách dễ dàng không? 
+                                        </span> </p>
+                                        <p> <span class="text-left">- Nghiên cứu ưu điểm, nhược điểm của các máy, thiết bị,  đo chỉ số nhịp tim, huyết áp, nồng độ oxy trong máu, thân nhiệt cơ thể có trên thị trường. </span> </p>
+                                        <p> <span class="text-left">- Nghiên cứu tính năng, ứng dụng của Module NodeMCU, các cảm biến đo các chỉ số: nhịp tim, nồng độ oxy trong máu, thân nhiệt cơ thể, huyết áp
+                                        </span></p>
+                                        <div class="contact"> <a href="tel: (+84)963396306"><img src="pic/phone.png"> (+84) 96 3396 306 </a> <span> Mọi thông tin chi tiết xin liên lạc với tác giả - Lê Gia Bách </span></div>
+                                   
                                 </div>
                             </div>
                         </div>
                 </div>
-                <div data-toggle="modal" data-target="#exampleModal3" class="item item-3"> <img class="normal" src="pic/icon-5.svg"> <img class="active" src="pic/icon-5-active.svg" class="active"> <span class="pl-3"> Tìm bác sĩ </span></div>
+                <div data-toggle="modal" data-target="#exampleModal3" class="item item-3"> <img class="normal" src="pic/icon-5.svg"> <img class="active" src="pic/icon-5-active.svg" class="active"> <span class="pl-3">Kết quả mong đợi</span></div>
                 <div
                     class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content"> <button class="modal-close modal-toggle " data-dismiss="modal" aria-label="Close">X</button>
                             <div class="modal-body">
-                                <h2 class="modal-title"> Tìm bác sĩ</h2>
-                                <div class="appointment-form-popup">
-                                    <form action="doi-ngu-chuyen-gia/">
-                                        <div class="form-group"> <label for=""> Tìm kiếm theo tên bác sĩ </label><input type="text" name="name_doctor" value="" placeholder="Tìm kiếm theo tên bác sĩ"></div>
-                                        <div class="form-group"> <label for=""> Chọn theo Chuyên khoa </label> <select name="park" id=""><option value="">Chọn theo Chuyên khoa</option>
-                                            <option value="896">Khoa Chẩn đoán hình ảnh và Điện quang can thiệp</option>
-                                            <option value="941">Khoa Cơ - Xương khớp</option>
-                                            <option value="927">Khoa Da liễu</option>
-                                            <option value="965">Khoa Dược</option>
-                                            <option value="916">Khoa Gây mê hồi sức</option>
-                                            <option value="34721">Khoa Hô Hấp</option>
-                                            <option value="889">Khoa Hồi sức tích cực - ICU</option>
-                                            <option value="974">Khoa Khám bệnh</option>
-                                            <option value="976">Khoa Kiểm soát nhiễm khuẩn</option>
-                                            <option value="929">Khoa Ngoại Chung</option>
-                                            <option value="902">Khoa Nhi</option>
-                                            <option value="891">Khoa Nội Chung</option>
-                                            <option value="910">Khoa Nội tiết</option>
-                                            <option value="957">Khoa Phẫu thuật Tạo hình thẩm mỹ</option>
-                                            <option value="945">Khoa Răng - Hàm - Mặt</option>
-                                            <option value="883">Khoa Sản - Phụ Khoa</option>
-                                            <option value="920">Khoa Tai - Mũi - Họng</option>
-                                            <option value="918">Khoa Tâm lý và sức khỏe tâm thần</option>
-                                            <option value="943">Khoa Thẩm mỹ và Chăm sóc trị liệu</option>
-                                            <option value="34684">Khoa Thận Lọc máu</option>
-                                            <option value="955">Khoa Tiêu hóa - Gan - Mật</option>
-                                            <option value="912">Khoa Tim mạch</option>
-                                            <option value="963">Khoa Ung bướu</option>
-                                            <option value="922">Khoa Vật lý trị liệu và phục hồi chức năng</option>
-                                            <option value="947">Khoa Xét nghiệm và giải phẫu bệnh</option>
-                                            <option value="949">Khoa Y tế dự phòng</option>
-                                            <option value="893">Nhãn Khoa</option>
-                                            <option value="931">TT Hỗ trợ sinh sản IVF Hồng Ngọc</option>
-                                         </select>
-                                        </div>
-                                        <div
-                                            class="form-group"> <label for=""> Tìm kiếm theo cơ sở </label> <select name="add" id=""><option value=""> Tìm kiếm theo cơ sở</option><option value="33166" >Bệnh viện Đa khoa Hồng Ngọc Phúc Trường Minh</option><option value="887" >BVĐK Hồng Ngọc Yên Ninh</option><option value="908" >Phòng Khám Đa Khoa Hồng Ngọc Keangnam</option><option value="32532" >Phòng Khám Đa Khoa Hồng Ngọc Kosmo</option><option value="15844" >Phòng khám Đa Khoa Hồng Ngọc Nguyễn Tuân</option><option value="885" >Phòng Khám Đa Khoa Hồng Ngọc Savico</option><option value="959" >Thẩm mỹ Hồng Ngọc Keangnam</option> </select></div>
-                                <button> Tìm kiếm </button></form>
-                            </div>
+                                <h2 class="modal-title"> Kết quả mong đợi</h2>
+                                <p>- Chế tạo được thiết bị hỗ trợ đo các chỉ số sức khỏe tại gia.
+                                </p>  
+                                <span><p>- Sản phẩm nhỏ gọn, tiện dụng, giá thành rẻ, dễ dàng thử nghiệm và áp dụng vào thực tiễn. </p></span>
+                                <span><p>- Website dễ dàng thao tác, giao diện thân thiện với người dùng</p></span>
                         </div>
                     </div>
             </div>
