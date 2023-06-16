@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll("nav ul li a");
+  const navLinks = document.querySelectorAll(".js");
   const tabPanes = document.querySelectorAll(".tab-pane");
   // make tab1 active by default
   document.querySelector("#tab1").classList.add("active");
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       navLinks.forEach(function (link) {
         link.classList.remove("active");
         link.classList.add("inActive");
+        
       });
 
       tabPanes.forEach(function (pane) {

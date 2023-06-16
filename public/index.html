@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js"
     integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -52,17 +53,17 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <div class="menu-menu-1-container">
                                 <ul id="menu-menu-1" class="main-menu navbar-nav ml-auto">
-                                    <li id="menu-item-947" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="#tab1" class="active" >Trang chủ</a>
+                                    <li id="menu-item-947" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="#tab1" class="active js" >Trang chủ</a>
                                     </li>
-                                    <li id="menu-item-955" class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955"><a href="#tab2">Giới thiệu</a>
+                                    <li id="menu-item-955" class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955"><a class="js" href="#tab2">Giới thiệu</a>
                                         
                                     </li>
-                                    <li id="menu-item-1111" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a href="#tab3">Các chỉ số đo</a>
+                                    <li id="menu-item-1111" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a class="js" href="#tab3">Các chỉ số đo</a>
                                         
                                     </li>
-                                    <li id="menu-item-1106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a href="#tab4">Tin tức</a>
+                                    <li id="menu-item-1106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a class="js" href="#tab4">Tin tức</a>
                                     </li>
-                                    <li id="menu-item-1103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103"><a href="#tab5">Liên hệ</a>
+                                    <li id="menu-item-1103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103"><a class="js" href="#tab5">Liên hệ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -76,14 +77,15 @@
             <div class="mobile-logo"> <a class="navbar-brand" href="index.html"> <img src="./pic/rsz_2logo.png" class="logo-top"></a></div>
             <div class="menu-menu-1-container">
                 <ul id="menu-menu-2" class="mobile-menu navbar-nav ml-auto">
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="#tab1">Trang chủ</a>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-947"><a href="#tab1" class = "active js">Trang chủ</a>
                     </li>
-                    <li class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955"><a href="#tab2">Giới thiệu</a>
+                    <li class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955"><a href="#tab2" class="js">Giới thiệu</a>
                     </li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84590"><a href="#tab3">Các chỉ số đo</a></li>
-                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a href="#tab4">Tin tức</a>
+                    
+                    <li id="menu-item-1111" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a href="#tab3" class="js">Các chỉ số đo</a>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a href="#tab4" class="js" >Tin tức</a>
                     </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a href="#tab5">Liên hệ</a>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a href="#tab5" class="js" >Liên hệ</a>
                     </li>
                 </ul>
             </div>
@@ -325,7 +327,7 @@
         <div class="container">
             <div class="d-flex jcs aic pb-2 w-100" style="border-bottom: 1px solid #2F4857;">
                 <p class="fs36 b600 text-uppercase ls2 mb-0"> tin tức hoạt động</p>
-                <p class="mb-0"> <a class="more" href="#tab3">Xem thêm</a></p>
+                <p class="mb-0"> <a class="more js" href="#tab4">Xem thêm</a></p>
             </div>
             <div id="tab-1" class="tab-content current">
                 <div class="row mt-4">
@@ -399,7 +401,279 @@
         </div>
     </div>
     <div id="tab3" class="tab-pane">
-        <p>adadad</p>
+      <!-- login tab -->
+      <div id="notLogin">
+        <div class="loginTab">
+          <h2>Đăng nhập</h2>
+          <form action="/login" method="POST">
+            <div class="input">
+              <label for="username">Tên đăng nhập:</label>
+              <input type="text" name="username" id="username" placeholder="số điện thoại của bạn" />
+            </div>
+            <div class="input">
+              <label for="password">Mật khẩu:</label>
+              <input type="password" name="password" id="password" placeholder="nhập mật khẩu của bạn" />
+            </div>
+            <div class="input">
+              <input type="submit" value="Đăng nhập" />
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="logined">
+        <h2>Chỉ số cảm biến hiện tại</h2>
+        <div id="indexLevel">
+          <h3 style="grid-area: body">Chỉ số cơ thể</h3>
+          <h3 style="grid-area: air">Chỉ số môi trường</h3>
+          <div id="levelBar" style="grid-area: level">
+            <p>Thấp</p>
+            <div id="theLevel">
+              <div title="Thấp ở mức nguy hiểm"></div>
+              <div title="Tối ưu"></div>
+              <div title="Bình thường"></div>
+              <div title="Cao"></div>
+              <div title="Rất cao"></div>
+              <div title="Cao ở mức rất nguy hiểm"></div>
+            </div>
+            <p>Cao</p>
+          </div>
+        </div>
+      
+
+        <div id="indexData">
+          <div id="health" title="Chỉ số cơ thể">
+            <div id="bloodPressure" style="grid-area: a">
+              <a href="#bloodPressureChartArea">
+                <div>
+                  <div>
+                    <span class="material-symbols-outlined">
+                      blood_pressure
+                    </span>
+                    <h3>Huyết áp:</h3>
+                  </div>
+                  <div>
+                    <div id="systolicValue">120</div>
+                    <p>/</p>
+                    <div id="diastolicValue">90</div>
+                    <p>mmHg</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div id="dropSpeed" style="grid-area: e">
+              <a>
+                <div>
+                  <div>
+                    <span class="material-symbols-outlined"> speed </span>
+                    <h3>Tốc độ nhỏ giọt:</h3>
+                  </div>
+                  <div>
+                    <div id="dropSpeedValue">60</div>
+                    <p>giọt/phút</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div id="heartRate" style="grid-area: b">
+              <a href="#heartRateChartArea">
+                <div>
+                  <div>
+                    <span class="material-symbols-outlined">
+                      health_metrics
+                    </span>
+                    <h3>Nhịp tim:</h3>
+                  </div>
+                  <div>
+                    <div id="heartRateValue">80</div>
+                    <p>bpm</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div id="SPO2" style="grid-area: c" title="Chỉ spO2 có giá trị càng cao càng tốt">
+              <a href="#SPO2ChartArea">
+                <div>
+                  <div>
+                    <span class="material-symbols-outlined"> SPO2 </span>
+                    <h3>SPO2:</h3>
+                  </div>
+                  <div>
+                    <div id="SPO2Value">89</div>
+                    <p>%</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div id="skinTemp" style="grid-area: d">
+              <a href="#skinTempChartArea">
+                <div>
+                  <div>
+                    <span class="material-symbols-outlined">
+                      thermometer
+                    </span>
+                    <h3>Nhiệt độ da:</h3>
+                  </div>
+                  <div>
+                    <div id="skinTempValue">39</div>
+                    <p>°C</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div id="air" title="Chỉ số môi trường">
+            <div id="airTempHumidity">
+              <a href="#airTempHumidityChartArea">
+                <div>
+                  <div>
+                    <span class="material-symbols-outlined"> sunny </span>
+                    <h3>Nhiệt độ</h3>
+                    <span class="material-symbols-outlined">
+                      humidity_mid
+                    </span>
+                    <h3>Độ ẩm</h3>
+                  </div>
+                  <div>
+                    <div id="airTempValue">22</div>
+                    <p style="margin-right: 1vw">°C</p>
+                    <div id="airHumidityValue">50</div>
+                    <p>%</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div id="PM2">
+              <a href="#PM2ChartArea">
+                <div>
+                  <div>
+                    <span class="material-symbols-outlined"> snowing </span>
+                    <h3>PM2.5:</h3>
+                  </div>
+                  <div>
+                    <div id="PM2Value">80</div>
+                    <p>ug/m3</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div id="SO2">
+              <a href="#SO2ChartArea">
+                <div>
+                  <div>
+                    <h3>SO2:</h3>
+                  </div>
+                  <div>
+                    <div id="SO2Value">0.5</div>
+                    <p>ppm</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div id="CO2">
+              <a href="#CO2ChartArea">
+                <div>
+                  <div>
+                    <h3>CO2:</h3>
+                  </div>
+                  <div>
+                    <div id="CO2Value">0.5</div>
+                    <p>ppm</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- detail -->
+        <h2>Biểu đồ chỉ số chi tiết</h2>
+      </div>
+
+
+      <!-- CHART -->
+      <!-- bloodPressure chart -->
+      <div id="bloodPressureChartArea" class="area">
+        <h3>Huyết áp</h3>
+        <canvas class="my-4 w-100 chartjs-render-monitor" id="bloodPressureChart"></canvas>
+      </div>
+
+      <!-- bpm chart -->
+      <div id="heartRateChartArea" class="area">
+        <h3>Nhịp tim</h3>
+        <canvas class="my-4 w-100 chartjs-render-monitor" id="heartChart"></canvas>
+      </div>
+
+      <!-- SPO2 chart -->
+      <div id="SPO2ChartArea" class="area">
+        <h3>SPO2</h3>
+        <canvas class="my-4 w-100 chartjs-render-monitor" id="SPO2cChart"></canvas>
+      </div>
+
+      <!-- temp chart -->
+      <div id="skinTempChartArea" class="area">
+        <h3>Nhiệt độ bề mặt da</h3>
+        <canvas class="my-4 w-100 chartjs-render-monitor" id="tempChart"></canvas>
+      </div>
+
+      <!-- airTempHumidity chart -->
+      <div id="airTempHumidityChartArea" class="area">
+        <h3>Nhiệt độ và độ ẩm</h3>
+        <canvas class="my-4 w-100 chartjs-render-monitor" id="airTempHumidityChart"></canvas>
+      </div>
+
+      <!-- PM2.5 chart -->
+      <div id="PM2ChartArea" class="area">
+        <h3>PM2.5</h3>
+        <canvas class="my-4 w-100 chartjs-render-monitor" id="PM2Chart"></canvas>
+      </div>
+
+      <!-- SO2 chart -->
+      <div id="SO2ChartArea" class="area">
+        <h3>SO2</h3>
+        <canvas class="my-4 w-100 chartjs-render-monitor" id="SO2Chart"></canvas>
+      </div>
+
+      <!-- CO2 chart -->
+      <div id="CO2ChartArea" class="area">
+        <h3>CO2</h3>
+        <canvas class="my-4 w-100 chartjs-render-monitor" id="CO2Chart"></canvas>
+      </div>
+
+      <!-- setting -->
+      <div id="setting">
+        <div id="inSetting">
+          <h2>Cảnh báo qua tin nhắn SMS</h2>
+          <!-- currentPhone -->
+          <div>
+            <h3>Số điện thoại đang nhận cảnh báo:</h3>
+            <h3 id="currentPhoneNumber">0834217367</h3>
+          </div>
+          <!-- changePhone -->
+
+          <div>
+            <h3>Đổi số điện thoại nhận cảnh báo:</h3>
+            <div>
+              <input type="number" id="phone1" name="phone1" placeholder="Nhập số muốn thay thế" />
+              <button type="button" id="phone1btn" class="btn btn-primary" style="background-color: #f53131">
+                Sửa số
+              </button>
+            </div>
+          </div>
+          <div>
+            <h3>Thêm 1 số điện thoại nhận cảnh báo:</h3>
+            <div>
+              <input type="text" id="phone2" name="phone2" placeholder="Nhập thêm số cần nhận thông báo" />
+              <button type="button" id="phone2btn" class="btn btn-danger" style="background-color: #34b257">
+                Thêm số
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
     <div id="tab4" class="tab-pane">
         <p>aldaldadadadadl</p>
@@ -439,8 +713,8 @@
             <div class="col-xs-6 col-md-3">
                 <h6>Quick Links</h6>
                 <ul class="footer-links">
-                <li><a href="#tab1">Giới thiệu</a></li>
-                <li><a href="#tab2">Liên hệ</a></li>
+                <li><a href="#tab2">Giới thiệu</a></li>
+                <li><a href="#tab5">Liên hệ</a></li>
                 <li><a href="http://google.com">Contribute</a></li>
                 <li><a href="http://google.com">Privacy Policy</a></li>
                 <li><a href="http://google.com">Sitemap</a></li>
