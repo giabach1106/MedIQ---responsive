@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi-VN">
 
-<he
+<head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no">
@@ -9,7 +9,6 @@
   <title>MedIQ</title>
   <meta name="description"
     content="“MedIQ - Hộp y tế thông minh ứng dụng nền tảng IOT và hệ thống AppMobile” là một sản phẩm được tạo ra với mục tiêu hỗ trợ các bệnh nhân trong việc theo dõi kết quả khám bệnh, giúp các bác sĩ trong việc quản lý thông tin bệnh nhân và thăm khám sức khỏe định kỳ với tiêu chí nhanh gọn - di động - giá thành hợp lý. " />
-  <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="shortcut icon" href="pic/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="./css/reset.css">
@@ -953,7 +952,7 @@
     ],
     datasets: [
       {
-        label: "Huyết áp (mmHg)",
+        label: "Huyết áp tâm thu (mmHg)",
         data: [180, 166, 145, 140, 122, 124, 117],
         borderColor: "red",
         borderWidth: 1,
@@ -961,7 +960,7 @@
         tension: 0.1,
       },
       {
-        label: "Huyết áp (mmHg)",
+        label: "Huyết áp tâm trương (mmHg)",
         data: [110, 118, 100, 94, 80, 82, 75],
         borderColor: "blue",
         borderWidth: 1,
@@ -1188,66 +1187,5 @@
       "#3c096c";
     document.querySelector("#bloodPressure").style.color = "white";
   }
-</script>backgroundColor = "#f53131";
-      document.querySelector("#CO2").style.color = "black";
-    } else if (CO2DataValue >= 1000) {
-      document.querySelector("#CO2").style.backgroundColor = "#f06969";
-      document.querySelector("#CO2").style.color = "black";
-    } else if (CO2DataValue >= 350) {
-      document.querySelector("#CO2").style.backgroundColor = "#ffbf00";
-      document.querySelector("#CO2").style.color = "black";
-    } else {
-      document.querySelector("#CO2").style.backgroundColor = "#34b257";
-      document.querySelector("#CO2").style.color = "black";
-    }
-
-    // PM2.5 using ug/m3 = 1/1000 ppm
-    if (PM2DataValue >= 150.4) {
-      document.querySelector("#PM2").style.backgroundColor = "#bf0000";
-      document.querySelector("#PM2").style.color = "white";
-    } else if (PM2DataValue >= 55.5) {
-      document.querySelector("#PM2").style.backgroundColor = "#f53131";
-      document.querySelector("#PM2").style.color = "black";
-    } else if (PM2DataValue >= 35.5) {
-      document.querySelector("#PM2").style.backgroundColor = "#f06969";
-      document.querySelector("#PM2").style.color = "black";
-    } else if (PM2DataValue >= 12.1) {
-      document.querySelector("#PM2").style.backgroundColor = "#ffbf00";
-      document.querySelector("#PM2").style.color = "black";
-    } else {
-      document.querySelector("#PM2").style.backgroundColor = "#34b257";
-      document.querySelector("#PM2").style.color = "black";
-    }
-  </script>
-   groundColor = "#f53131";
-      document.querySelector("#CO2").style.color = "black";
-    } else if (CO2DataValue >= 1000) {
-      document.querySelector("#CO2").style.backgroundColor = "#f06969";
-      document.querySelector("#CO2").style.color = "black";
-    } else if (CO2DataValue >= 350) {
-      document.querySelector("#CO2").style.backgroundColor = "#ffbf00";
-      document.querySelector("#CO2").style.color = "black";
-    } else {
-      document.querySelector("#CO2").style.backgroundColor = "#34b257";
-      document.querySelector("#CO2").style.color = "black";
-    }
-
-    // PM2.5 using ug/m3 = 1/1000 ppm
-    if (PM2DataValue >= 150.4) {
-      document.querySelector("#PM2").style.backgroundColor = "#bf0000";
-      document.querySelector("#PM2").style.color = "white";
-    } else if (PM2DataValue >= 55.5) {
-      document.querySelector("#PM2").style.backgroundColor = "#f53131";
-      document.querySelector("#PM2").style.color = "black";
-    } else if (PM2DataValue >= 35.5) {
-      document.querySelector("#PM2").style.backgroundColor = "#f06969";
-      document.querySelector("#PM2").style.color = "black";
-    } else if (PM2DataValue >= 12.1) {
-      document.querySelector("#PM2").style.backgroundColor = "#ffbf00";
-      document.querySelector("#PM2").style.color = "black";
-    } else {
-      document.querySelector("#PM2").style.backgroundColor = "#34b257";
-      document.querySelector("#PM2").style.color = "black";
-    }
-  </script>
+</script>
    
