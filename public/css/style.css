@@ -3903,3 +3903,10 @@ canvas {
   margin-right: 0.25vw !important;
   margin-left: 0.25vw !important;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
