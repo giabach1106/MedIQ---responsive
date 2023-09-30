@@ -1319,7 +1319,7 @@
   } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
   import {
-    getFirestore, doc, setDoc, getDoc, getDocs, addDoc, collection,
+    getFirestore, doc, setDoc, getDoc, getDocs, addDoc, collection, where
   } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
   // firebase config
@@ -1335,9 +1335,6 @@
   const firebaseApp = initializeApp(firebaseConfig);
   const auth = getAuth(firebaseApp);
   const db = getFirestore(firebaseApp);
-  const docRef = doc(db, "12A","2smC3EKTPewBe6dxbuQN")
-
-
 
   //firebase signup
   const signupForm = document.querySelector('#sign-up');
@@ -1350,7 +1347,6 @@
     const signupPassword = signupForm['signup-password'].value;
     const signupName = signupForm['signup-name'].value;
     const signupClass = signupForm['signup-class'].value;
-    console.log(signupEmail, signupPassword);
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -1379,7 +1375,7 @@
     signInWithEmailAndPassword(auth, loginEmail, loginPassword)
       .then((userCredential) => {
         const user = userCredential.user;
-        const q = query(collection(db, "12A"), where("accid", "==", "user.uid"));
+        const q = query(collection(db, "12A"), where("accid", "==", user.uid));
         const querySnapshot = getDocs(q);
         querySnapshot.forEach((doc) =>{
           console.log(doc.id, "=>", doc.data());
@@ -1398,7 +1394,6 @@
   const divLogin = document.querySelector('#login-form');
   const divSignup = document.querySelector('#signup-form');
   // console.log(divLogout.style);
-  console.log(divLogin.style);
   const showLoginForm = () => {
     divLogin.style.display = 'block';
     divSignup.style.display = 'block';
