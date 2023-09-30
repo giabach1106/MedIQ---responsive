@@ -1298,7 +1298,7 @@
   } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
   import {
-    getFirestore, doc, setDoc, getDoc, getDocs, addDoc, collection, where
+    getFirestore, doc, setDoc, getDoc, getDocs, addDoc, collection, where, query
   } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
   // firebase config
@@ -1318,7 +1318,10 @@
   //firebase signup
   const signupForm = document.querySelector('#sign-up');
   const logoutForm = document.querySelector('#log-out');
-  // console.log(signupForm);
+
+  const docRef = doc(db, "12A", "2smC3EKTPewBe6dxbuQN");
+  // const docSnap = await getDocs(docRef);
+  console.log(typeof(docRef));
   signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
     //get user info
@@ -1354,11 +1357,17 @@
     signInWithEmailAndPassword(auth, loginEmail, loginPassword)
       .then((userCredential) => {
         const user = userCredential.user;
-        const q = query(collection(db, "12A"), where("accid", "==", user.uid));
-        const querySnapshot = getDocs(q);
-        querySnapshot.forEach((doc) =>{
-          console.log(doc.id, "=>", doc.data());
-        })
+        // const q = query(collection(db, "12A"), where("accid", "==", ));
+        // if(accid == user.uid){
+        //   console.log("asdasd");
+        // }
+        // else{ 
+        //   console.log("n");
+        // }
+        // const querySnapshot = getDocs(q);
+        // querySnapshot.forEach((doc) =>{
+        //   console.log(doc.id, "=>", doc.data());
+        // })
       })
       .catch((error) => {
         alert("Loi dang nhap");
