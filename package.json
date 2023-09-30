@@ -15,7 +15,6 @@
     "firebase": "^10.4.0",
     "style-loader": "^3.3.3"
   },
-
   "author": "",
   "license": "ISC"
 }
