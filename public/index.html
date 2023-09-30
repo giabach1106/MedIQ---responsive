@@ -124,7 +124,7 @@
               href="#tab5" class="js">Liên hệ</a>
           </li>
           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
-              href="#tab6">Log in</a>
+              href="#tab6" class="js">Log in</a>
           </li>
         </ul>
       </div>
@@ -172,7 +172,26 @@
               <input type="text" placeholder="Name" class="input" id="signup-name">
             </div>
             <div class="field input-field">
-              <input type="text" placeholder="Class" class="input" id="signup-class">
+              <input list="classes" placeholder="Class" class="input" id="signup-class">
+              <datalist id="classes">
+                <option value="12 Tin">
+                <option value="12 Hóa 1">
+                <option value="12 Hóa 2">
+                <option value="12 Lý 1">
+                <option value="12 Lý 2">
+                <option value="12 Sử">
+                <option value="12 Văn">
+                <option value="12 Sinh">
+                <option value="12 Song Bằng">
+                <option value="12 Toán 1">
+                <option value="12 Toán 2">
+                <option value="12 Anh 1">
+                <option value="12 Anh 2">
+                <option value="12 Địa">
+                <option value="12 Trung">
+                <option value="12 Pháp">
+                <option value="12 Nga">
+              </datalist>
             </div>
             <div class="field input-field">
               <input type="email" placeholder="Email" class="input" id="signup-email">
@@ -632,6 +651,27 @@
     </div>
   </div>
   <div id="tab3" class="tab-pane">
+    <!-- login tab -->
+    <div id="notLogin">
+      <div class="loginTab">
+        <h2>Đăng nhập</h2>
+        <form action="/login" method="POST">
+          <div class="input">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" name="username" id="username" placeholder="số điện thoại của bạn" />
+          </div>
+          <div class="input">
+            <label for="password">Mật khẩu:</label>
+            <input type="password" name="password" id="password" placeholder="nhập mật khẩu của bạn" />
+          </div>
+          <div class="input">
+            <input type="submit" value="Đăng nhập" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="logined">
       <h2>Chỉ số cảm biến hiện tại</h2>
       <div id="indexLevel">
         <div id="levelBar" style="grid-area: level">
@@ -735,7 +775,7 @@
 
       <!-- detail -->
       <h2>Biểu đồ chỉ số chi tiết</h2>
-    
+    </div>
 
 
     <!-- CHART -->
@@ -1298,7 +1338,7 @@
   } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
   import {
-    getFirestore, doc, setDoc, getDoc, getDocs, addDoc, collection, where, query
+    getFirestore, doc, setDoc, getDoc, getDocs, addDoc, collection, where, query, onSnapshot
   } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
   // firebase config
@@ -1315,13 +1355,13 @@
   const auth = getAuth(firebaseApp);
   const db = getFirestore(firebaseApp);
 
+  // const docRef = doc(db, "12A", "2smC3EKTPewBe6dxbuQN");
+  // const docSnap = await getDoc(docRef);
+  // console.log(docSnap.data());
   //firebase signup
   const signupForm = document.querySelector('#sign-up');
   const logoutForm = document.querySelector('#log-out');
-
-  const docRef = doc(db, "12A", "2smC3EKTPewBe6dxbuQN");
-  // const docSnap = await getDocs(docRef);
-  console.log(typeof(docRef));
+  // console.log(signupForm);
   signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
     //get user info
@@ -1340,15 +1380,14 @@
           name: signupName,
         }
         setDoc(colRef, data);
-        // console.log(data.email);
       })
       .catch((error) => {
-        alert(error)
+        alert(error);
       });
   })
   //firebase login
   const loginForm = document.querySelector('#log-in');
-  
+
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     //get user info
@@ -1357,22 +1396,11 @@
     signInWithEmailAndPassword(auth, loginEmail, loginPassword)
       .then((userCredential) => {
         const user = userCredential.user;
-        // const q = query(collection(db, "12A"), where("accid", "==", ));
-        // if(accid == user.uid){
-        //   console.log("asdasd");
-        // }
-        // else{ 
-        //   console.log("n");
-        // }
-        // const querySnapshot = getDocs(q);
-        // querySnapshot.forEach((doc) =>{
-        //   console.log(doc.id, "=>", doc.data());
-        // })
       })
       .catch((error) => {
         alert("Loi dang nhap");
       });
-    
+
   })
 
   logoutForm.addEventListener('submit', () => {
@@ -1396,10 +1424,18 @@
     onAuthStateChanged(auth, user => {
       // console.log(user);
       if (user) {
+        const q = query(collection(db, "12A"), where("accid", "==", user.uid));
+        onSnapshot(q, (snapshot) => {
+          let userData = [];
+          snapshot.docs.forEach((doc) => {
+            userData.push({ ...doc.data(), id: doc.id });
+          })
+          console.log(userData);
+        })
         showLogoutForm();
       }
       else {
-        showLoginForm()
+        showLoginForm();
       }
     })
   }
