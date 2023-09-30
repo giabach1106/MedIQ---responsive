@@ -22,6 +22,24 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+let obj = {
+  name: "Bach",
+  age: 17,
+  school: "ams"
+}
+
+function isAdmin(req, res,next) {
+  console.log(req.query.admin)
+  if (req.query.admin == "true") {
+    next()
+  } else {
+    res.status(403).json("not allow")
+  }
+}
+
+app.get("/api/get-name",isAdmin, (req, res) => {
+  res.json(obj)
+})
 
 //listen for a connection
 io.on("connection", function (socket) {
