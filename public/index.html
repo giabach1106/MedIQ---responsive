@@ -12,13 +12,10 @@
   <link rel="shortcut icon" href="pic/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./css/register.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
   <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js"
     integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -27,7 +24,6 @@
   <script src="./js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" type="text/css" href="css/all.css">
-  <!-- <a href="https://fb.me/gia.bach.116/" target="_blank"> <img src="pic/icon-chat.png" class="icon-chat-facebook"> </a> -->
   <link rel="stylesheet" type="text/css" href="./css/owl.carousel.min.css">
   <link rel="stylesheet" type="text/css" href="./css/owl.theme.default.min.css">
   <link rel="stylesheet" type="text/css"
@@ -39,8 +35,10 @@
   <script type="text/javascript" src="./js/bootstrap.min.js"></script>
   <script type="text/javascript" src="./js/owl.carousel.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/dashboard.css">
-  
-  <script src="./js/chatbot.js" defer></script>
+  <!--Start of Fchat.vn-->
+  <script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=650f94284ef281179271e302"
+    async="async"></script><!--End of Fchat.vn-->
+
 </head>
 
 <body data-rsssl=1
@@ -87,6 +85,17 @@
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103">
                     <a class="js" href="#tab5">Liên hệ</a>
                   </li>
+                  <li id="menu-item-login"
+                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103">
+                    <!-- Modal trigger button -->
+                    <a class="js" href="#tab6">
+                      Login
+                    </a>
+                  </li>
+                  <li id="menu-item-1103"
+                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103">
+                    <a href="./admin.html">Admin</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -118,9 +127,106 @@
           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
               href="#tab5" class="js">Liên hệ</a>
           </li>
+          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
+              href="#tab6" class="js">Log in</a>
+          </li>
+          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
+              href="./admin.html" class="js">Admin</a>
+          </li>
         </ul>
       </div>
     </div>
+  </div>
+
+  <div id="tab6" class="tab-pane">
+    <section class="container-login-form forms" id="container-login-form">
+      <div class="form login" id="login-form">
+        <div class="form-content">
+          <header>Login</header>
+          <form id="log-in">
+            <div class="field input-field">
+              <input type="email" placeholder="Email" class="input" id="login-email">
+            </div>
+
+            <div class="field input-field">
+              <input type="password" placeholder="Password" class="password" id="login-password">
+              <i class='bx bx-hide eye-icon'></i>
+            </div>
+
+            <div class="form-link">
+              <a href="#" class="forgot-pass">Forgot password?</a>
+            </div>
+
+            <div class="field button-field">
+              <button id="btnLogin">Login</button>
+            </div>
+          </form>
+
+          <div class="form-link">
+            <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Signup Form -->
+
+      <div class="form signup" id="signup-form">
+        <div class="form-content">
+          <header>Signup</header>
+          <form id="sign-up">
+            <div class="field input-field">
+              <input type="text" placeholder="Name" class="input" id="signup-name">
+            </div>
+            <div class="field input-field">
+              <input list="classes" placeholder="Class" class="input" id="signup-class">
+              <datalist id="classes">
+                <option value="12 Tin">
+                <option value="12 Hóa 1">
+                <option value="12 Hóa 2">
+                <option value="12 Lý 1">
+                <option value="12 Lý 2">
+                <option value="12 Sử">
+                <option value="12 Văn">
+                <option value="12 Sinh">
+                <option value="12 Song Bằng">
+                <option value="12 Toán 1">
+                <option value="12 Toán 2">
+                <option value="12 Anh 1">
+                <option value="12 Anh 2">
+                <option value="12 Địa">
+                <option value="12 Trung">
+                <option value="12 Pháp">
+                <option value="12 Nga">
+              </datalist>
+            </div>
+            <div class="field input-field">
+              <input type="email" placeholder="Email" class="input" id="signup-email">
+            </div>
+
+            <div class="field input-field">
+              <input type="password" placeholder="Create password" class="password" id="signup-password">
+            </div>
+            <div class="field button-field">
+              <button>Signup</button>
+            </div>
+            <div class="form-link">
+              <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="form logout" id="logout-form">
+        <div class="form-content">
+          <header>Logout</header>
+          <form id="log-out">
+            <div class="field button-field">
+              <button id="btnLogout">Logout</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- Main content -->
@@ -552,6 +658,9 @@
     </div>
   </div>
   <div id="tab3" class="tab-pane">
+    <!-- login tab -->
+
+    <div id="logined">
       <h2>Chỉ số cảm biến hiện tại</h2>
       <div id="indexLevel">
         <div id="levelBar" style="grid-area: level">
@@ -655,6 +764,7 @@
 
       <!-- detail -->
       <h2>Biểu đồ chỉ số chi tiết</h2>
+    </div>
 
 
     <!-- CHART -->
@@ -717,28 +827,12 @@
     </div>
   </div>
 
-  <!-- Chatbot -->
-  <button class="chatbot-toggler">
-    <span class="material-symbols-rounded">mode_comment</span>
-    <span class="material-symbols-outlined">close</span>
-  </button>
-  <div class="chatbot">
-    <header>
-      <h2>MedIQ Chatbot</h2>
-      <span class="close-btn material-symbols-outlined">close</span>
-    </header>
-    <ul class="chatbox">
-      <li class="chat incoming">
-        <span class="material-symbols-outlined">smart_toy</span>
-        <p>Xin chào 👋<br>Bạn muốn tư vấn vấn đề gì?</p>
-      </li>
-    </ul>
-    <div class="chat-input">
-      <textarea placeholder="Nhập câu hỏi..." spellcheck="false" required></textarea>
-      <span id="send-btn" class="material-symbols-rounded">send</span>
-    </div>
+  <!-- Admin site -->
+  <div id="admin" class="tab-pane">
+    
   </div>
-
+    
+    
   <!-- Site footer -->
   <footer class="site-footer">
     <div class="container">
@@ -788,6 +882,35 @@
       </div>
     </div>
   </footer>
+  <script>
+    const forms = document.querySelector(".forms"),
+      pwShowHide = document.querySelectorAll(".eye-icon"),
+      links = document.querySelectorAll(".link");
+
+    pwShowHide.forEach(eyeIcon => {
+      eyeIcon.addEventListener("click", () => {
+        let pwFields = eyeIcon.parentElement.parentElement.querySelectorAll(".password");
+
+        pwFields.forEach(password => {
+          if (password.type === "password") {
+            password.type = "text";
+            eyeIcon.classList.replace("bx-hide", "bx-show");
+            return;
+          }
+          password.type = "password";
+          eyeIcon.classList.replace("bx-show", "bx-hide");
+        })
+
+      })
+    })
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault(); //preventing form submit
+        forms.classList.toggle("show-signup");
+      })
+    })
+  </script>
 </body>
 
 </html>
@@ -1195,4 +1318,7 @@
       "#3c096c";
     document.querySelector("#bloodPressure").style.color = "white";
   }
+</script>
+<!-- Login script -->
+<script type="module" src="./js/auth.js">
 </script>
