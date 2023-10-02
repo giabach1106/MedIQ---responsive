@@ -26,15 +26,9 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
-
-// console.log(docSnap.data());
-// const docRef = doc(db, "12A", "2smC3EKTPewBe6dxbuQN");
-// const docSnap = await getDoc(docRef);
-// console.log(docSnap.data());
 //firebase signup
 
-let studentClass = "";
-let studentID = "";
+let studentData = [];
 
 const signupForm = document.querySelector('#sign-up');
 const logoutForm = document.querySelector('#log-out');
@@ -110,6 +104,7 @@ const monitorAuthState = async () => {
     onAuthStateChanged(auth, user => {
         // console.log(user);
         if (user) {
+            showLogoutForm();
             const q = query(collection(db, "DuLieu"), where("id", "==", user.uid));
             onSnapshot(q, (snapshot) => {
                 let userData = [];
@@ -117,19 +112,19 @@ const monitorAuthState = async () => {
                     userData.push({ ...doc.data(), id: doc.id });
                 })
                 // console.log(userData[0].class);
-                studentClass = userData[0].class;
-                studentID = userData[0].id;
-                console.log(studentClass, studentID)
+                const studentClass = userData[0].class;
+                const studentID = userData[0].id;
+                // console.log(studentClass, studentID)
+                const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", user.uid));
+                onSnapshot(studentQuery, (snapshot) => {
+                    let userData = [];
+                    snapshot.docs.forEach((docs) => {
+                        userData.push({ ...docs.data(), id: docs.id });
+                    })
+                    studentData.push(userData);
+                })
             })
-            // const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", user.uid));
-            // onSnapshot(q, (snapshot) => {
-            //     let userData = [];
-            //     snapshot.docs.forEach((doc) => {
-            //         userData.push({ ...doc.data(), id: doc.id });
-            //     })
-            //     console.log(userData);
-            // })
-            showLogoutForm();
+            console.log(studentData);
         }
         else {
             showLoginForm();
@@ -137,3 +132,5 @@ const monitorAuthState = async () => {
     })
 }
 monitorAuthState();
+
+export { studentData };
