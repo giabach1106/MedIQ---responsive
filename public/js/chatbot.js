@@ -3,10 +3,10 @@ const closeBtn = document.querySelector(".close-btn");
 const chatbox = document.querySelector(".chatbox");
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
-
+import { dataBMI, dataSPO2 } from "../js/auth.js";
 let userMessage = null; // Variable to store user's message
-const API_KEY = "adad"; // Paste your API key here
-//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
+const API_KEY = "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"; // Paste your API key here
+console.log(API_KEY);
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
@@ -22,13 +22,17 @@ const createChatLi = (message, className) => {
 const generateResponse = (chatElement) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const messageElement = chatElement.querySelector("p");
-    userMessage = userMessage + " ,hãy trả lời câu hỏi của tôi bằng Tiếng Việt, càng ngắn càng tốt, ưu tiến giới hạn trong 20 đến 30 từ"
+    if(userMessage == "Đánh giá"){
+        userMessage = "Với các chỉ số sức khoẻ sau đây, hãy nhận xét tình trạng sức khoẻ của tôi bằng Tiếng - chỉ sô SPO2= " + dataSPO2 + " - chỉ số BMI= " + dataBMI; 
+    }
+    else {userMessage = userMessage + " ,hãy trả lời câu hỏi của tôi bằng Tiếng Việt, càng ngắn càng tốt, ưu tiến giới hạn trong 20 đến 30 từ";}
+    
     // Define the properties and message for the API request
     const requestOptions = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}`
+            "Authorization": `Bearer ${API_KEY}`,
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
@@ -36,6 +40,8 @@ const generateResponse = (chatElement) => {
         })
     }
 
+    console.log(requestOptions)
+    
     // Send POST request to API, get response and set the reponse as paragraph text
     fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
         messageElement.textContent = data.choices[0].message.content.trim();

@@ -135,6 +135,5 @@ monitorAuthState();
 await delay(2000);
 const dataSPO2 = studentData[0].SPO2;
 const dataBMI = studentData[0].BMI;
-console.log(dataBMI, dataSPO2);
-// const dataSPO2 = studentData[0].SPO2;
+await delay(2000);
 export { dataBMI, dataSPO2 };
