@@ -33,9 +33,9 @@ const db = getFirestore(firebaseApp);
 // console.log(docSnap.data());
 //firebase signup
 
-let studentData = [];
-let studentClass = "";
+var studentClass = "";
 let studentID = "";
+let studentData = [];
 
 const signupForm = document.querySelector('#sign-up');
 const logoutForm = document.querySelector('#log-out');
@@ -106,39 +106,35 @@ const showLogoutForm = () => {
     divLogin.style.display = 'none';
     divSignup.style.display = 'none';
     divLogout.style.display = 'block';
-}
+};
+const delay = ms => new Promise(res => setTimeout(res, ms));
 const monitorAuthState = async () => {
-    onAuthStateChanged(auth, user => {
-        // console.log(user);
+    onAuthStateChanged(auth, async (user) => {
         if (user) {
             const q = query(collection(db, "DuLieu"), where("id", "==", user.uid));
-            onSnapshot(q, (snapshot) => {
-                let userData = [];
-                snapshot.docs.forEach((doc) => {
-                    userData.push({ ...doc.data(), id: doc.id });
-                })
-                // console.log(userData[0].class);
-                studentClass = userData[0].class;
-                studentID = userData[0].id;
-                const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", studentID));
-                onSnapshot(studentQuery, (snapshot) => {
-                    let userData = [];
-                    snapshot.docs.forEach((docs) => {
-                        userData.push({ ...docs.data(), id: docs.id });
-                    })
-                    // console.log(userData);
-                    studentData.push(userData);
-                })
-            })
+            const snapshot = await getDocs(q);
+            let userData = [];
+            snapshot.forEach((doc) => {
+                userData.push({ ...doc.data(), id: doc.id });
+            });
+            studentClass = userData[0].class;
+            studentID = userData[0].id;
+            const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", studentID));
+            const studentSnapshot = await getDocs(studentQuery);
+            let numData = [];
+            studentSnapshot.forEach((doc) => {
+                studentData.push({ ...doc.data(), id: doc.id})
+            });
             showLogoutForm();
-            console.log(studentData);
-        }
-        else {
+        } else {
             showLoginForm();
         }
-    })
-}
-const dataSpO2 = studentData[0].SPO2;
-const dataBMI = studentData[0].BMI;
-export { dataBMI, dataSpO2 };
+    });
+};
 monitorAuthState();
+await delay(2000);
+const dataSPO2 = studentData[0].SPO2;
+const dataBMI = studentData[0].BMI;
+console.log(dataBMI, dataSPO2);
+// const dataSPO2 = studentData[0].SPO2;
+export { dataBMI, dataSPO2 };
