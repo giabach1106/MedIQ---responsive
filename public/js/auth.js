@@ -118,7 +118,7 @@ const monitorAuthState = async () => {
                 })
                 // console.log(userData[0].class);
                 studentClass = userData[0].class;
-                studentID = userData[0].class;
+                studentID = userData[0].id;
                 console.log(studentClass, studentID)
             })
             // const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", user.uid));
