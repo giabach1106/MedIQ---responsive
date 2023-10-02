@@ -33,8 +33,7 @@ const db = getFirestore(firebaseApp);
 // console.log(docSnap.data());
 //firebase signup
 
-let studentClass = "";
-let studentID = "";
+let studentData = [];
 
 const signupForm = document.querySelector('#sign-up');
 const logoutForm = document.querySelector('#log-out');
@@ -117,18 +116,18 @@ const monitorAuthState = async () => {
                     userData.push({ ...doc.data(), id: doc.id });
                 })
                 // console.log(userData[0].class);
-                studentClass = userData[0].class;
-                studentID = userData[0].id;
+                const studentClass = userData[0].class;
+                const studentID = userData[0].id;
                 console.log(studentClass, studentID)
             })
-            // const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", user.uid));
-            // onSnapshot(q, (snapshot) => {
-            //     let userData = [];
-            //     snapshot.docs.forEach((doc) => {
-            //         userData.push({ ...doc.data(), id: doc.id });
-            //     })
-            //     console.log(userData);
-            // })
+            const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", user.uid));
+            onSnapshot(q, (snapshot) => {
+                let userData = [];
+                snapshot.docs.forEach((doc) => {
+                    userData.push({ ...doc.data(), id: doc.id });
+                })
+                console.log(userData);
+            })
             showLogoutForm();
         }
         else {
