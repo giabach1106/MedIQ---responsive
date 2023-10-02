@@ -138,4 +138,7 @@ const monitorAuthState = async () => {
         }
     })
 }
+const dataSpO2 = studentData[0].SPO2;
+const dataBMI = studentData[0].BMI;
+export { dataBMI, dataSpO2 };
 monitorAuthState();
