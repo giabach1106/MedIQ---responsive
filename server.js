@@ -64,7 +64,7 @@ io.on("connection", function (socket) {
 });
 
 
-//listen on port 4000
-http.listen(process.env.PORT || 4000, function () {
-  console.log("listening on *:4000");
+//listen on port 3140
+http.listen(process.env.PORT || 3140, function () {
+  console.log("listening on *:3140");
 });
