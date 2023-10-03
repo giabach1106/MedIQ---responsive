@@ -23,9 +23,9 @@
     integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-  <script src="./js/chart.js"></script>
+  <script type="module" src="./js/chart.js"></script>
   <script src="./js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" type="text/css" href="css/all.css">
   <!-- <a href="https://fb.me/gia.bach.116/" target="_blank"> <img src="pic/icon-chat.png" class="icon-chat-facebook"> </a> -->
   <link rel="stylesheet" type="text/css" href="./css/owl.carousel.min.css">
@@ -1032,65 +1032,8 @@
   })
 </script>
 <script src="/socket.io/socket.io.js"></script>
-<script>
 
-  const socket = io('', { query: 'clientType=web' });
-
-  const skinTempInfo = document.getElementById("skinTempValue");
-  const heartInfo = document.getElementById("heartRateValue");
-  const SPO2Info = document.getElementById("SPO2Value");
-  const dropSpeedInfo = document.getElementById("dropSpeedValue");
-  const systolicInfo = document.getElementById("systolicValue");
-  const diastolicInfo = document.getElementById("diastolicValue");
-
-  //nhan tin nhan ve suc khoe
-  socket.on("message_suckhoe", (data) => {
-    if (data.notify == 1) {
-      alert("Cảnh báo: Bệnh nhân cần được chăm sóc");
-    }
-    console.log(data);
-
-    if (data.temp != 0) {
-      setData(tempData.datasets[0].data, data.temp);
-      skinTempInfo.innerHTML = data.temp;
-    }
-    if (data.heart != 0) {
-      setData(heartData.datasets[0].data, data.heart);
-      heartInfo.innerHTML = data.heart;
-    }
-    if (data.spo2 != 0) {
-      setData(SPO2.datasets[0].data, data.spo2);
-      SPO2Info.innerHTML = data.spo2;
-    }
-
-
-
-    tempChart.update();
-    heartChart.update();
-    SPO2Chart.update();
-  });
-
-  //nhan tin nhan huyet ap va dem giot
-  socket.on("message_huyetap", (data) => {
-    console.log(data);
-
-    if (data.tocdonhogiot != 0) {
-      dropSpeedInfo.innerHTML = data.tocdonhogiot;
-    }
-    if (data.sys != 0) {
-      systolicInfo.innerHTML = data.sys;
-      setData(bloodPressureChart.data.datasets[0].data, data.sys);
-    }
-    if (data.dia != 0) {
-      diastolicInfo.innerHTML = data.dia;
-      setData(bloodPressureChart.data.datasets[1].data, data.dia);
-    }
-
-    bloodPressureChart.update();
-
-  });
-</script>
-
+<script type="module" src="./js/chiso.js"></script>
 <!-- chart -->
 <script>
   var ctx_temp = document.getElementById("tempChart").getContext("2d");

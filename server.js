@@ -53,6 +53,10 @@ io.on("connection", function (socket) {
     console.log("received message_suckhoe");
     socket.broadcast.emit("message_suckhoe", msg);
   });
+  socket.on("/trungtam", function (msg) {
+    console.log("received /trungtam");
+    socket.broadcast.emit("/trungtam", msg);
+  });
   socket.on("message_huyetap", function (msg) {
     console.log("received message_huyetap");
     socket.broadcast.emit("message_huyetap", msg);

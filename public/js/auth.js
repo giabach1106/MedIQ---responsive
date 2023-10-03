@@ -12,7 +12,8 @@ import {
 import {
     getFirestore, doc, setDoc, getDoc, getDocs, addDoc, collection, where, query, onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
-
+import { dataToSend } from "../js/chiso.js";
+console.log(dataToSend + "1123");
 // firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyDr7eVxyookedQsOZJ6VTgSqfFnPrdy1U4",
