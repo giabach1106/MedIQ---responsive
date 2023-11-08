@@ -253,14 +253,14 @@ nav .profile-details i{
   font-size: 20px;
   font-weight: 500;
 }
-.home-content .sales-boxes{
+.home-content .check-boxes{
   display: flex;
   justify-content: space-between;
   /* padding: 0 20px; */
 }
 
 /* left box */
-.home-content .sales-boxes .recent-sales{
+.home-content .check-boxes .recent-check{
   width: 65%;
   background: #fff;
   padding: 20px 30px;
@@ -268,36 +268,36 @@ nav .profile-details i{
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.home-content .sales-boxes .sales-details{
+.home-content .check-boxes .check-details{
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.sales-boxes .box .title{
+.check-boxes .box .title{
   font-size: 24px;
   font-weight: 500;
   /* margin-bottom: 10px; */
 }
-.sales-boxes .sales-details li.topic{
+.check-boxes .check-details li.topic{
   font-size: 20px;
   font-weight: 500;
 }
-.sales-boxes .sales-details li{
+.check-boxes .check-details li{
   list-style: none;
   margin: 8px 0;
 }
-.sales-boxes .sales-details li a{
+.check-boxes .check-details li a{
   font-size: 18px;
   color: #333;
   font-size: 400;
   text-decoration: none;
 }
-.sales-boxes .box .button{
+.check-boxes .box .button{
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
-.sales-boxes .box .button a{
+.check-boxes .box .button a{
   color: #fff;
   background: #0A2558;
   padding: 4px 12px;
@@ -307,26 +307,26 @@ nav .profile-details i{
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.sales-boxes .box .button a:hover{
+.check-boxes .box .button a:hover{
   background:  #0d3073;
 }
 
 /* Right box */
-.home-content .sales-boxes .top-sales{
-  width: 35%;
+.home-content .check-boxes .top-check{
+  width: 27%;
   background: #fff;
   padding: 20px 30px;
   margin: 0 20px 0 0;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.sales-boxes .top-sales li{
+.check-boxes .top-check li{
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
 }
-.sales-boxes .top-sales li a img{
+.check-boxes .top-check li a img{
   height: 40px;
   width: 40px;
   object-fit: cover;
@@ -334,12 +334,12 @@ nav .profile-details i{
   margin-right: 10px;
   background: #333;
 }
-.sales-boxes .top-sales li a{
+.check-boxes .top-check li a{
   display: flex;
   align-items: center;
   text-decoration: none;
 }
-.sales-boxes .top-sales li .product,
+.check-boxes .top-check li .product,
 .price{
   font-size: 17px;
   font-weight: 400;
@@ -372,15 +372,15 @@ nav .profile-details i{
   }
 }
 @media (max-width: 1150px) {
-  .home-content .sales-boxes{
+  .home-content .check-boxes{
     flex-direction: column;
   }
-  .home-content .sales-boxes .box{
+  .home-content .check-boxes .box{
     width: 100%;
     overflow-x: scroll;
     margin-bottom: 30px;
   }
-  .home-content .sales-boxes .top-sales{
+  .home-content .check-boxes .top-check{
     margin: 0;
   }
 }
@@ -400,7 +400,7 @@ nav .profile-details i{
     height: 50px;
     min-width: 40px;
   }
-  .home-content .sales-boxes .sales-details{
+  .home-content .check-boxes .check-details{
     width: 560px;
   }
 }
@@ -436,4 +436,80 @@ nav .profile-details i{
     left: 60px;
     width: calc(100% - 60px);
   }
+}
+
+
+/* Add your existing styles here */
+
+/* Add your existing styles here */
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.upper-row,
+.lower-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.card {
+  position: relative;
+  width: 530px; /* Total width of the card including the image */
+  height: 400px; /* Total height of the card including the image */
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensure the image does not overflow */
+  transition: transform 0.3s ease;
+  margin-right: 13%; /* Increased space between the cards */
+}
+
+.long-card {
+  width: 530px;
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale the card on hover for a zoom effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%; /* Make the image fill the card horizontally */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 70%; /* Set the maximum height to 70% of the card's height */
+  object-fit: contain; /* Center and contain the image */
+  position: absolute;
+  top: 50%; /* Center the image vertically */
+  left: 50%; /* Center the image horizontally */
+  transform: translate(-50%, -50%); /* Center the image perfectly */
+}
+
+.card-content {
+  position: absolute;
+  top: 50%; /* Center the text vertically */
+  left: 50%; /* Center the text horizontally */
+  transform: translate(-50%, -50%); /* Center the text perfectly */
+  padding: 15px;
+  font-size: 16px;
+  color: #555;
+  text-align: center; /* Align the text center */
+  z-index: 1; /* Place the text above the image */
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.card-title h1{
+  text-align: center;
 }

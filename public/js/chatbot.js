@@ -5,8 +5,7 @@ const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 import { dataBMI, dataSPO2 } from "../js/auth.js";
 let userMessage = null; // Variable to store user's message
-const API_KEY = "adad"; // Paste your API key here
-//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 (adad)
+ // Paste your API key here
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
@@ -23,7 +22,7 @@ const generateResponse = (chatElement) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const messageElement = chatElement.querySelector("p");
     if(userMessage == "Đánh giá"){
-        userMessage = "Với các chỉ số sức khoẻ sau đây, hãy nhận xét tình trạng sức khoẻ của tôi bằng Tiếng - chỉ sô SPO2= " + dataSPO2 + " - chỉ số BMI= " + dataBMI; 
+        userMessage = "Với các chỉ số sức khoẻ sau đây, hãy nhận xét tình trạng sức khoẻ của tôi bằng Tiếng Việt một cách ngắn gọn - chỉ sô SPO2= " + dataSPO2 + " - chỉ số BMI= " + dataBMI; 
     }
     else {userMessage = userMessage + " ,hãy trả lời câu hỏi của tôi bằng Tiếng Việt, càng ngắn càng tốt, ưu tiến giới hạn trong 20 đến 30 từ";}
     
@@ -32,7 +31,7 @@ const generateResponse = (chatElement) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}`,
+            "Authorization": `Bearer ${API_KEY}`
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
@@ -66,7 +65,7 @@ const handleChat = () => {
     
     setTimeout(() => {
         // Display "Thinking..." message while waiting for the response
-        const incomingChatLi = createChatLi("Đang nhập...", "...");
+        const incomingChatLi = createChatLi("Đang suy nghĩ...", "...");
         chatbox.appendChild(incomingChatLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
         generateResponse(incomingChatLi);

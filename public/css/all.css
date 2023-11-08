@@ -5708,7 +5708,7 @@ readers do not read off random characters that represent icons */
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #232836;
+    background-color: #9be5aa;
     column-gap: 30px;
 }
 
@@ -5798,13 +5798,13 @@ form {
 
 .field button {
     color: #fff;
-    background-color: #0171d3;
+    background-color: #3aef58;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .field button:hover {
-    background-color: #016dcb;
+    background-color: #24c049;
 }
 
 .form-link {

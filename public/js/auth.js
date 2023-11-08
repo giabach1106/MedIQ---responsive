@@ -5,8 +5,6 @@ import {
     signOut,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    connectAuthEmulator,
-    AuthErrorCodes
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 import {
@@ -26,7 +24,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
-
 // console.log(docSnap.data());
 // const docRef = doc(db, "12A", "2smC3EKTPewBe6dxbuQN");
 // const docSnap = await getDoc(docRef);
@@ -35,7 +32,8 @@ const db = getFirestore(firebaseApp);
 
 var studentClass = "";
 let studentID = "";
-let studentData = [];
+var dataBMI, dataSPO2;
+
 
 const signupForm = document.querySelector('#sign-up');
 const logoutForm = document.querySelector('#log-out');
@@ -82,7 +80,7 @@ loginForm.addEventListener('submit', (e) => {
     const loginPassword = loginForm['login-password'].value;
     signInWithEmailAndPassword(auth, loginEmail, loginPassword)
         .then((userCredential) => {
-            const user = userCredential.user;
+            window.location.reload();
         })
         .catch((error) => {
             alert("Loi dang nhap");
@@ -107,10 +105,19 @@ const showLogoutForm = () => {
     divSignup.style.display = 'none';
     divLogout.style.display = 'block';
 };
+let isAdmin = false;
 const delay = ms => new Promise(res => setTimeout(res, ms));
 const monitorAuthState = async () => {
     onAuthStateChanged(auth, async (user) => {
         if (user) {
+            console.log(user.uid);
+            if (user.uid == "dLfsxJfhDdSn3wtxL5swH6o4om42") {
+                isAdmin = true;
+                // window.location.href = "/admin";
+            }
+            else {
+                isAdmin = false;
+            }
             const q = query(collection(db, "DuLieu"), where("id", "==", user.uid));
             const snapshot = await getDocs(q);
             let userData = [];
@@ -120,10 +127,16 @@ const monitorAuthState = async () => {
             studentClass = userData[0].class;
             studentID = userData[0].id;
             const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", studentID));
-            const studentSnapshot = await getDocs(studentQuery);
-            let numData = [];
-            studentSnapshot.forEach((doc) => {
-                studentData.push({ ...doc.data(), id: doc.id})
+            console.log(studentQuery);
+            const unsubscribe = onSnapshot(studentQuery, (querySnapshot) => {
+                // console.log("Data updated!");
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    dataBMI = data.BMI;
+                    dataSPO2 = data.SPO2;
+                    // console.log(dataBMI, dataSPO2);
+                    // Handle updated data for each document in the query result
+                });
             });
             showLogoutForm();
         } else {
@@ -131,9 +144,10 @@ const monitorAuthState = async () => {
         }
     });
 };
+
 monitorAuthState();
 await delay(2000);
-const dataSPO2 = studentData[0].SPO2;
-const dataBMI = studentData[0].BMI;
+console.log(dataBMI, dataSPO2);
 await delay(2000);
 export { dataBMI, dataSPO2 };
+
