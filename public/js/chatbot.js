@@ -7,7 +7,7 @@ import { dataBMI, dataSPO2 } from "../js/auth.js";
 let userMessage = null; // Variable to store user's message
  // Paste your API key here
 const inputInitHeight = chatInput.scrollHeight;
-
+console.log(dataBMI, dataSPO2);
 const createChatLi = (message, className) => {
     // Create a chat <li> element with passed message and className
     const chatLi = document.createElement("li");

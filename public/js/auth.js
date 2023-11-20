@@ -25,11 +25,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
-// console.log(docSnap.data());
-// const docRef = doc(db, "12A", "2smC3EKTPewBe6dxbuQN");
-// const docSnap = await getDoc(docRef);
-// console.log(docSnap.data());
-//firebase signup
 
 var studentClass = "";
 let studentID = "";
@@ -81,7 +76,11 @@ loginForm.addEventListener('submit', (e) => {
     const loginPassword = loginForm['login-password'].value;
     signInWithEmailAndPassword(auth, loginEmail, loginPassword)
         .then((userCredential) => {
-            window.location.reload();
+            //add loader
+            if(loginEmail == "adminams@gmail.com"){
+                var adminSite = "/admin.html";
+                window.location.href = adminSite;
+            }
         })
         .catch((error) => {
             alert("Loi dang nhap");
@@ -148,7 +147,7 @@ const monitorAuthState = async () => {
 
 monitorAuthState();
 await delay(2000);
-console.log(dataBMI, dataSPO2);
+// console.log(dataBMI, dataSPO2);
 await delay(2000);
 export { dataBMI, dataSPO2 };
 

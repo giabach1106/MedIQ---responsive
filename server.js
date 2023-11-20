@@ -2,7 +2,6 @@
 var express = require("express");
 var app = express();
 var http = require("http").Server(app);
-// var admin = require("./public/js/auth.js");
 // // io needs to have allow EIO3 and cors
 // console.log(admin.isAdmin);
 var io = require("socket.io")(http, {
@@ -26,12 +25,6 @@ app.get("/", function (req, res) {
 app.get("/admin", function (req, res) {
   res.sendFile(__dirname + "/public/admin.html");
 });
-
-let obj = {
-  name: "Bach",
-  age: 17,
-  school: "ams"
-}
 
 function isAdmin(req, res,next) {
   console.log(req.query.admin)
