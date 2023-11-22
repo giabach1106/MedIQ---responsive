@@ -12,5 +12,5 @@
     
 
   });
-// dataToSend = "asdsasd";
+
 export  {dataToSend};

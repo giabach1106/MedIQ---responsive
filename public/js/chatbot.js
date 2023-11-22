@@ -6,6 +6,7 @@ const sendChatBtn = document.querySelector(".chat-input span");
 import { dataBMI, dataSPO2 } from "../js/auth.js";
 let userMessage = null; // Variable to store user's message
  // Paste your API key here
+const API_KEY = "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"; // Paste your API key here
 const inputInitHeight = chatInput.scrollHeight;
 console.log(dataBMI, dataSPO2);
 const createChatLi = (message, className) => {

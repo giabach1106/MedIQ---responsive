@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi-VN">
 
@@ -39,18 +40,16 @@
   <script type="text/javascript" src="./js/bootstrap.min.js"></script>
   <script type="text/javascript" src="./js/owl.carousel.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/dashboard.css">
-
-  <script type="module" src="./js/chatbot.js"></script>
-  <!-- <script type="module" src="./js/test.js"></script> -->
+  
+  <script type="module" src="./js/chatbot.js" ></script>
 </head>
 
 <body data-rsssl=1
   class="home page-template page-template-templates page-template-page-new-home page-template-templatespage-new-home-php page page-id-77039">
-  <!-- <div class="loader"></div> -->
   <div class="outer">
     <div class="wrap-header d-none d-lg-block">
       <div class="top-info text-right">
-        <div class="container">
+        <div class="container ">
           <div class="d-flex" style="justify-content: flex-end;">
             <p class=" info2 ml-3 mb-0"><img src="pic/icon-2.svg"><span class="b600 text-white pl-2">096 3396 306</span>
             </p>
@@ -73,7 +72,7 @@
                   </li>
                   <li id="menu-item-955"
                     class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955">
-                    <a class="js">Giới thiệu</a>
+                    <a class="js" href="#tab2">Giới thiệu</a>
 
                   </li>
                   <li id="menu-item-1111"
@@ -123,13 +122,13 @@
           </li>
 
           <li id="menu-item-1111"
-            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"
-            id="sustag"><a href="#tab3" class="js" id="sus">Các chỉ số đo</a>
+            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a
+              href="#tab3" class="js">Các chỉ số đo</a>
           <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111">
             <a href="#tab4" class="js">Tin tức</a>
           </li>
           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
-              href="#tab5">Liên hệ</a>
+              href="#tab5" class="js">Liên hệ</a>
           </li>
           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
               href="#tab6" class="js">Log in</a>
@@ -806,7 +805,7 @@
           <div class="col-md-8">
             <h1 class="page-title">Liên hệ</h1>
             <div class="page-simple">
-              <h4><strong><span style="color: #008000;"> Giáo viên hướng dẫn</span></strong></h4>
+              <h4><strong><span style="color: #008000;"> Giáo viên hướng dẫn</span></strong></h4>
               <h5>Ms. Lê Thị Thuý</h5>
               <h5>Email: lethithuy111191@gmail.com</h5>
               <h5>Tel: 0383328779</h5>
@@ -832,9 +831,11 @@
   </div>
 
   <!-- Admin site -->
-
-  <!-- Chatbot -->
-  <button class="chatbot-toggler">
+  <div id="admin" class="tab-pane">
+    
+  </div>
+   <!-- Chatbot -->
+   <button class="chatbot-toggler">
     <span class="material-symbols-rounded">mode_comment</span>
     <span class="material-symbols-outlined">close</span>
   </button>
@@ -853,8 +854,8 @@
       <textarea placeholder="Nhập câu hỏi..." spellcheck="false" required></textarea>
       <span id="send-btn" class="material-symbols-rounded">send</span>
     </div>
-  </div>
-
+  </div>  
+    
   <!-- Site footer -->
   <footer class="site-footer">
     <div class="container">
@@ -1040,6 +1041,7 @@
   var ctx_heart = document.getElementById("heartChart").getContext("2d");
   var ctx_SPO2 = document.getElementById("SPO2cChart").getContext("2d");
   var ctx_bloodPressure = document.getElementById("bloodPressureChart").getContext("2d");
+
   var bloodPressureData = {
     labels: [
       60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
@@ -1048,7 +1050,7 @@
     datasets: [
       {
         label: "Huyết áp tâm thu (mmHg)",
-        data: datasus1,
+        data: [180, 166, 145, 140, 122, 124, 117],
         borderColor: "red",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1056,7 +1058,7 @@
       },
       {
         label: "Huyết áp tâm trương (mmHg)",
-        data: datasus2,
+        data: [110, 118, 100, 94, 80, 82, 75],
         borderColor: "blue",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1075,7 +1077,7 @@
     datasets: [
       {
         label: "Nhiệt độ bề mặt da (°C)",
-        data: datasus3,
+        data: [1, 0, 31, 10, 50, 30, 36, 38, 38.2, 34, 39, 37.8],
         borderColor: "#4152A3",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1177,7 +1179,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<!-- Chart -->
+
 <script>
   // get data to show in Index
   document.querySelector("#skinTempValue").innerHTML = tempDataValue;

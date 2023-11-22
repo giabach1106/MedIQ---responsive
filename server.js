@@ -26,15 +26,6 @@ app.get("/admin", function (req, res) {
   res.sendFile(__dirname + "/public/admin.html");
 });
 
-function isAdmin(req, res,next) {
-  console.log(req.query.admin)
-  if (req.query.admin == "true") {
-    next()
-  } else {
-    res.status(403).json("not allow")
-  }
-}
-
 //listen for a connection
 io.on("connection", function (socket) {
   if (socket.handshake.query.clientType == "web") {
