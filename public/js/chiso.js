@@ -2,7 +2,7 @@
 const socket = io('', { query: 'clientType=web' });
 
   let dataToSend  = { 
-    nhiptim: 1, sbp: 2, dbp: 3, spo2: 4, nhietdocothe: 9
+    // sbp: 100, dbp: 100, nhiptim: 100, nhietdocothe: 30, spo2: 99, demgiot: 70
   };
 
   // nhietdocothe: "",
@@ -10,6 +10,7 @@ const socket = io('', { query: 'clientType=web' });
   // nhiptim: "",
   // sbp: "", // tam truong
   // dbp: "", // tam thu
+  //demgiot
 //   tin nhan tu bo xu li trung tam 
   socket.on("/trungtam", (data) => {
     console.log(data);

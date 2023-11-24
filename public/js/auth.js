@@ -148,6 +148,7 @@ const monitorAuthState = async () => {
  
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
+
                     dataSPO2 = data.SPO2;
                 });
             });

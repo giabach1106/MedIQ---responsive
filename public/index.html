@@ -692,9 +692,9 @@
                   <h3>Huyết áp:</h3>
                 </div>
                 <div>
-                  <div id="systolicValue">120</div>
+                  <div id="systolicValue"></div>
                   <p>/</p>
-                  <div id="diastolicValue">90</div>
+                  <div id="diastolicValue"></div>
                   <p>mmHg</p>
                 </div>
               </div>
@@ -708,8 +708,8 @@
                   <h3>Tốc độ nhỏ giọt:</h3>
                 </div>
                 <div>
-                  <div id="dropSpeedValue">60</div>
-                  <p>giọt/phút</p>
+                  <div id="dropSpeedValue"></div>
+                  <p id="dropSpeedData">giọt/phút</p>
                 </div>
               </div>
             </a>
@@ -724,7 +724,7 @@
                   <h3>Nhịp tim:</h3>
                 </div>
                 <div>
-                  <div id="heartRateValue">80</div>
+                  <div id="heartRateValue"></div>
                   <p>bpm</p>
                 </div>
               </div>
@@ -738,7 +738,7 @@
                   <h3>SPO2:</h3>
                 </div>
                 <div>
-                  <div id="SPO2Value">89</div>
+                  <div id="SPO2Value"></div>
                   <p>%</p>
                 </div>
               </div>
@@ -754,7 +754,7 @@
                   <h3>Nhiệt độ da:</h3>
                 </div>
                 <div>
-                  <div id="skinTempValue">39</div>
+                  <div id="skinTempValue"></div>
                   <p>°C</p>
                 </div>
               </div>
@@ -1041,17 +1041,35 @@
   // nhiptim: "",
   // sbp: "", // tam truong
   // dbp: "", // tam thu
-  var temp_val = [];
-  var spo2_val = [];
-  var heart_val = [];
-  var sbp_val = [];
-  var dbp_val = [];
+
+  //get id
+  var bloodPressure = document.getElementById("bloodPressure");
+  var dropSpeed = document.getElementById("dropSpeedData");
+  var heartRate = document.getElementById("hearRate");
+  var Spo2 = document.getElementById("SPO2");
+  var skinTemp = document.getElementById("skinTemp");
+
+  //dataset
+  var temp_val = [0];
+  var spo2_val = [0];
+  var heart_val = [0];
+  var sbp_val = [0];
+  var dbp_val = [0];
   var ctx_temp = document.getElementById("tempChart").getContext("2d");
   var ctx_heart = document.getElementById("heartChart").getContext("2d");
   var ctx_SPO2 = document.getElementById("SPO2cChart").getContext("2d");
   var ctx_bloodPressure = document.getElementById("bloodPressureChart").getContext("2d");
+  let tempDataValue = "";
+  let SPO2DataValue = "";
+  let heartDataValue = "";
+  let systolicDataValue = "";
+  let diastolicDataValue = "";
 
-  var labels = []
+  //labels
+  var labelBloodPressure = [];
+  var labelSPO2 = [];
+  var labelHeartRate = [];
+  var labelTemp = [];
   function generateTimestamp() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
@@ -1060,7 +1078,7 @@
     return `${hours}:${minutes}:${seconds}`;
   }
   var bloodPressureData = {
-    labels: labels,
+    labels: labelBloodPressure,
     datasets: [
       {
         label: "Huyết áp tâm thu (mmHg)",
@@ -1080,11 +1098,9 @@
       },
     ],
   };
-  let systolicDataValue = bloodPressureData.datasets[0].data[bloodPressureData.datasets[0].data.length - 1];
-  let diastolicDataValue = bloodPressureData.datasets[1].data[bloodPressureData.datasets[1].data.length - 1];
 
   var tempData = {
-    labels: labels,
+    labels: labelTemp,
     datasets: [
       {
         label: "Nhiệt độ bề mặt da (°C)",
@@ -1096,11 +1112,10 @@
       },
     ],
   };
-  let tempDataValue =
-    tempData.datasets[0].data[tempData.datasets[0].data.length - 1];
+  
 
   var heartData = {
-    labels: labels,
+    labels: labelHeartRate,
     datasets: [
       {
         label: "Nhịp tim (lần/phút)",
@@ -1112,11 +1127,9 @@
       },
     ],
   };
-  let heartDataValue =
-    heartData.datasets[0].data[heartData.datasets[0].data.length - 1];
 
   var SPO2 = {
-    labels: labels,
+    labels: labelSPO2,
     datasets: [
       {
         label: "Nồng độ Oxy trong máu (%)",
@@ -1128,8 +1141,6 @@
       },
     ],
   };
-  let SP02DataValue =
-    SPO2.datasets[0].data[SPO2.datasets[0].data.length - 1];
 
   var tempOption = {
     // responsive: false,
@@ -1182,23 +1193,119 @@
     data: bloodPressureData,
     options: bloodPressureOption,
   });
+  function checkData() {
+    document.querySelector("#skinTempValue").innerHTML = tempDataValue;
+    document.querySelector("#heartRateValue").innerHTML = heartDataValue;
+    document.querySelector("#SPO2Value").innerHTML = SPO2DataValue;
+    document.querySelector("#systolicValue").innerHTML = systolicDataValue;
+    document.querySelector("#diastolicValue").innerHTML = diastolicDataValue;
+    // temp
+    if (tempDataValue >= 40) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#bf0000";
+      document.querySelector("#skinTemp").style.color = "white";
+    } else if (tempDataValue >= 39) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#f53131";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 38) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#f06969";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 37.5) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#ffbf00";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 36) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#34b257";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else {
+      document.querySelector("#skinTemp").style.backgroundColor = "#3c096c";
+      document.querySelector("#skinTemp").style.color = "white";
+    }
 
-  function updateChartData() {
-    const newDataPoint = Math.random() * 100;
-    temp_val.push(dataToSend.nhietdocothe);
-    spo2_val.push(dataToSend.spo2);
-    heart_val.push(dataToSend.nhiptim);
+    // heart
+    if (heartDataValue >= 100) {
+      document.querySelector("#heartRate").style.backgroundColor = "#bf0000";
+      document.querySelector("#heartRate").style.color = "white";
+    } else if (heartDataValue >= 80) {
+      document.querySelector("#heartRate").style.backgroundColor = "#f53131";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 68) {
+      document.querySelector("#heartRate").style.backgroundColor = "#f06969";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 62) {
+      document.querySelector("#heartRate").style.backgroundColor = "#ffbf00";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 54) {
+      document.querySelector("#heartRate").style.backgroundColor = "#34b257";
+      document.querySelector("#heartRate").style.color = "black";
+    } else {
+      document.querySelector("#heartRate").style.backgroundColor = "#3c096c";
+      document.querySelector("#heartRate").style.color = "white";
+    }
+
+    // SPO2
+    if (SPO2DataValue <= 88) {
+      document.querySelector("#SPO2").style.backgroundColor = "#bf0000";
+      document.querySelector("#SPO2").style.color = "white";
+    } else if (SPO2DataValue <= 92) {
+      document.querySelector("#SPO2").style.backgroundColor = "#f53131";
+      document.querySelector("#SPO2").style.color = "black";
+    } else if (SPO2DataValue <= 95) {
+      document.querySelector("#SPO2").style.backgroundColor = "#ffbf00";
+      document.querySelector("#SPO2").style.color = "black";
+    } else if (SPO2DataValue <= 100) {
+      document.querySelector("#SPO2").style.backgroundColor = "#34b257";
+      document.querySelector("#SPO2").style.color = "black";
+    } else {
+      document.querySelector("#SPO2").style.backgroundColor = "#3c096c";
+      document.querySelector("#SPO2").style.color = "white";
+      document.querySelector("#SPO2").innerHTML = "N/A";
+    }
+
+    // blood pressure
+    if (systolicDataValue - diastolicDataValue <= 20) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#bf0000";
+      document.querySelector("#bloodPressure").style.color = "white";
+    } else if (systolicDataValue >= 180 || diastolicDataValue >= 110) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#f53131";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 160 || diastolicDataValue >= 100) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#f06969";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 140 || diastolicDataValue >= 90) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#ffbf00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 130 || diastolicDataValue >= 85) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#B6BA00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 120 || diastolicDataValue >= 80) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#4E8B00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 90 || diastolicDataValue >= 60) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#34B257";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue < 90 || diastolicDataValue < 60) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#3c096c";
+      document.querySelector("#bloodPressure").style.color = "white";
+    }
+  }
+  // temp_val.push(dataToSend.nhietdocothe);
+  //   spo2_val.push(dataToSend.spo2);
+  //   heart_val.push(dataToSend.nhiptim);
+  //   sbp_val.push(dataToSend.sbp);
+  //   dbp_val.push(dataToSend.dbp);
+  function updateBloodPressureChartData() {
     sbp_val.push(dataToSend.sbp);
     dbp_val.push(dataToSend.dbp);
-    if (temp_val > 10) {
-      temp_val.shift();
-    }
-    if (spo2_val > 10) {
-      spo2_val.shift();
-    }
-    if (heart_val > 10) {
-      heart_val.shift();
-    }
+    systolicDataValue = bloodPressureData.datasets[0].data[bloodPressureData.datasets[0].data.length - 1];
+    diastolicDataValue = bloodPressureData.datasets[1].data[bloodPressureData.datasets[1].data.length - 1];
+    checkData();
     if (sbp_val > 10) {
       sbp_val.shift();
     }
@@ -1206,138 +1313,87 @@
       dbp_val.shift();
     }
     const newTimestamp = generateTimestamp();
-    labels.push(newTimestamp);
-    if (labels.length > 10) {
-      labels.shift();
+    labelBloodPressure.push(newTimestamp);
+    if (labelBloodPressure.length > 10) {
+      labelBloodPressure.shift();
     }
 
-    // Update the chart dataset with the new data
-    SPO2Chart.data.datasets[0].data = spo2_val;
-    tempChart.data.datasets[0].data = temp_val;
-    heartChart.data.datasets[0].data = heart_val;
     bloodPressureChart.data.datasets[0].data = dbp_val;
     bloodPressureChart.data.datasets[1].data = sbp_val;
-
-    // Update the chart
-    SPO2Chart.update();
-    tempChart.update();
-    heartChart.update();
     bloodPressureChart.update();
   }
 
   // Update the chart data every 2 seconds
-  setInterval(updateChartData, 2000);
+  setInterval(updateBloodPressureChartData, 2000);
+  // get data to show in Index
+  function updateHeartRateChartData() {
+    heart_val.push(dataToSend.nhiptim);
+    heartDataValue = heartData.datasets[0].data[heartData.datasets[0].data.length - 1];
+    checkData();
+    if (heart_val > 10) {
+      sbp_val.shift();
+    }
+    const newTimestamp = generateTimestamp();
+    labelHeartRate.push(newTimestamp);
+    if (labelHeartRate.length > 10) {
+      labelHeartRate.shift();
+    }
+
+    heartChart.data.datasets[0].data = heart_val;
+    heartChart.update();
+  }
+
+  // Update the chart data every 2 seconds
+  setInterval(updateHeartRateChartData, 2000);
+
+  function updateTempChartData() {
+    temp_val.push(dataToSend.nhietdocothe);
+    tempDataValue = tempData.datasets[0].data[tempData.datasets[0].data.length - 1];
+    checkData();
+    if (temp_val > 10) {
+      temp_val.shift();
+    }
+    const newTimestamp = generateTimestamp();
+    labelTemp.push(newTimestamp);
+    if (labelTemp.length > 10) {
+      labelTemp.shift();
+    }
+
+    tempChart.data.datasets[0].data = temp_val;
+    tempChart.update();
+  }
+  
+
+  // Update the chart data every 2 seconds
+  setInterval(updateTempChartData, 2000);
+
+  function updateSPO2ChartData() {
+    spo2_val.push(dataToSend.spo2);
+    SPO2DataValue = SPO2.datasets[0].data[SPO2.datasets[0].data.length - 1];
+    checkData();
+    if (spo2_val > 10) {
+      spo2_val.shift();
+    }
+    const newTimestamp = generateTimestamp();
+    labelSPO2.push(newTimestamp);
+    if (labelSPO2.length > 10) {
+      labelSPO2.shift();
+    }
+
+    SPO2Chart.data.datasets[0].data = spo2_val;
+    SPO2Chart.update();
+  }
+  
+  setInterval(updateSPO2ChartData, 2000);
+
+  function updateDropSpeedData() {
+    dropSpeedData.innerHTML = dataToSend.demgiot + " giọt/phút";
+  }
+  setInterval(updateDropSpeedData, 2000);
 
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<script>
-  // get data to show in Index
-  document.querySelector("#skinTempValue").innerHTML = tempDataValue;
-  document.querySelector("#heartRateValue").innerHTML = heartDataValue;
-  document.querySelector("#SPO2Value").innerHTML = SP02DataValue;
-  document.querySelector("#systolicValue").innerHTML = systolicDataValue;
-  document.querySelector("#diastolicValue").innerHTML = diastolicDataValue;
-  // chage the color due the value
-
-  // temp
-  if (tempDataValue >= 40) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#bf0000";
-    document.querySelector("#skinTemp").style.color = "white";
-  } else if (tempDataValue >= 39) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#f53131";
-    document.querySelector("#skinTemp").style.color = "black";
-  } else if (tempDataValue >= 38) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#f06969";
-    document.querySelector("#skinTemp").style.color = "black";
-  } else if (tempDataValue >= 37.5) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#ffbf00";
-    document.querySelector("#skinTemp").style.color = "black";
-  } else if (tempDataValue >= 36) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#34b257";
-    document.querySelector("#skinTemp").style.color = "black";
-  } else {
-    document.querySelector("#skinTemp").style.backgroundColor = "#3c096c";
-    document.querySelector("#skinTemp").style.color = "white";
-  }
-
-  // heart
-  if (heartDataValue >= 100) {
-    document.querySelector("#heartRate").style.backgroundColor = "#bf0000";
-    document.querySelector("#heartRate").style.color = "white";
-  } else if (heartDataValue >= 80) {
-    document.querySelector("#heartRate").style.backgroundColor = "#f53131";
-    document.querySelector("#heartRate").style.color = "black";
-  } else if (heartDataValue >= 68) {
-    document.querySelector("#heartRate").style.backgroundColor = "#f06969";
-    document.querySelector("#heartRate").style.color = "black";
-  } else if (heartDataValue >= 62) {
-    document.querySelector("#heartRate").style.backgroundColor = "#ffbf00";
-    document.querySelector("#heartRate").style.color = "black";
-  } else if (heartDataValue >= 54) {
-    document.querySelector("#heartRate").style.backgroundColor = "#34b257";
-    document.querySelector("#heartRate").style.color = "black";
-  } else {
-    document.querySelector("#heartRate").style.backgroundColor = "#3c096c";
-    document.querySelector("#heartRate").style.color = "white";
-  }
-
-  // SPO2
-  if (SP02DataValue <= 88) {
-    document.querySelector("#SPO2").style.backgroundColor = "#bf0000";
-    document.querySelector("#SPO2").style.color = "white";
-  } else if (SP02DataValue <= 92) {
-    document.querySelector("#SPO2").style.backgroundColor = "#f53131";
-    document.querySelector("#SPO2").style.color = "black";
-  } else if (SP02DataValue <= 95) {
-    document.querySelector("#SPO2").style.backgroundColor = "#ffbf00";
-    document.querySelector("#SPO2").style.color = "black";
-  } else if (SP02DataValue <= 100) {
-    document.querySelector("#SPO2").style.backgroundColor = "#34b257";
-    document.querySelector("#SPO2").style.color = "black";
-  } else {
-    document.querySelector("#SPO2").style.backgroundColor = "#3c096c";
-    document.querySelector("#SPO2").style.color = "white";
-    document.querySelector("#SPO2Num").innerHTML = "N/A";
-  }
-
-  // blood pressure
-  if (systolicDataValue - diastolicDataValue <= 20) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#bf0000";
-    document.querySelector("#bloodPressure").style.color = "white";
-  } else if (systolicDataValue >= 180 || diastolicDataValue >= 110) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#f53131";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 160 || diastolicDataValue >= 100) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#f06969";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 140 || diastolicDataValue >= 90) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#ffbf00";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 130 || diastolicDataValue >= 85) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#B6BA00";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 120 || diastolicDataValue >= 80) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#4E8B00";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 90 || diastolicDataValue >= 60) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#34B257";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue < 90 || diastolicDataValue < 60) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#3c096c";
-    document.querySelector("#bloodPressure").style.color = "white";
-  }
-</script>
 <!-- Login script -->
 <script type="module" src="./js/auth.js">
 </script>

@@ -3,66 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Chart with Timestamp</title>
-  <!-- Include Chart.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Toggle Boolean with Div</title>
+  <style>
+    #togglingDiv {
+      width: 200px;
+      height: 100px;
+      background-color: #3498db;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <!-- Create a canvas element to render the chart -->
-  <canvas id="myChart" width="400" height="200"></canvas>
 
-  <script>
-    // Initialize the chart data
-    var data = {
-      labels: [],
-      datasets: [{
-        label: 'Data',
-        borderColor: 'rgb(75, 192, 192)',
-        data: [],
-        fill: false
-      }]
-    };
+<div id="togglingDiv">Toggle Boolean: false</div>
 
-    // Get the context of the canvas element
-    var ctx = document.getElementById('myChart').getContext('2d');
+<script>
+  // Boolean variable to toggle
+  let isToggled = false;
 
-    // Create the chart with initial data
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: data,
-      options: {
-        scales: {
-          x: [{
-            type: 'linear',
-            position: 'bottom'
-          }]
-        }
-      }
-    });
+  // Function to be executed when the div is clicked
+  function handleToggle() {
+    // Toggle the boolean value
+    isToggled = !isToggled;
 
-    // Function to update the chart data with a timestamp every 5 seconds
-    function updateChart() {
-      // Get the current timestamp in the format HH:mm:ss
-      var timestamp = new Date().toLocaleTimeString('en-US', {hour12: false});
+    // Update the text content of the div
+    const togglingDiv = document.getElementById('togglingDiv');
+    togglingDiv.textContent = `Toggle Boolean: ${isToggled}`;
+  }
 
-      // Add the timestamp to the labels
-      data.labels.push(timestamp);
+  // Get the div element
+  const togglingDiv = document.getElementById('togglingDiv');
 
-      // Add a random data point (replace this with your actual data)
-      data.datasets[0].data.push(Math.random() * 100);
+  // Add a click event listener to the div
+  togglingDiv.addEventListener('click', handleToggle);
+</script>
 
-      // Limit the number of data points to show (e.g., last 10)
-      if (data.labels.length > 10) {
-        data.labels.shift();
-        data.datasets[0].data.shift();
-      }
-
-      // Update the chart
-      myChart.update();
-    }
-
-    // Update the chart every 5 seconds
-    setInterval(updateChart, 5000);
-  </script>
 </body>
 </html>

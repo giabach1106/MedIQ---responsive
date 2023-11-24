@@ -3,12 +3,12 @@ const closeBtn = document.querySelector(".close-btn");
 const chatbox = document.querySelector(".chatbox");
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
-import { dataToSend } from "./js/chiso.js"
+import { dataToSend } from "../js/chiso.js"
 let userMessage = null; // Variable to store user's message
  // Paste your API key here
-//const API_KEY = "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";
+// const API_KEY = "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";
 const inputInitHeight = chatInput.scrollHeight;
-console.log(dataBMI, dataSPO2);
+console.log(dataToSend);
 const createChatLi = (message, className) => {
     // Create a chat <li> element with passed message and className
     const chatLi = document.createElement("li");
