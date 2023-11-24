@@ -1027,7 +1027,6 @@
       $(this).siblings().slideToggle();
       $(this).toggleClass('active');
       $('.mobile-menu li .sub-menu').toggleClass('active');
-
     });
   })
 </script>
@@ -1035,7 +1034,7 @@
 
 <script type="module" src="./js/chiso.js"></script>
 <!-- chart -->
-<script>
+<script type="module">
   import { dataToSend } from "./js/chiso.js";
   // nhietdocothe: "",
   // spo2: "",
@@ -1047,8 +1046,6 @@
   var heart_val = [];
   var sbp_val = [];
   var dbp_val = [];
-
-
   var ctx_temp = document.getElementById("tempChart").getContext("2d");
   var ctx_heart = document.getElementById("heartChart").getContext("2d");
   var ctx_SPO2 = document.getElementById("SPO2cChart").getContext("2d");
@@ -1155,6 +1152,13 @@
       suggestedMax: 100,
     },
   };
+  var bloodPressureOption = {
+    // responsive: false,
+    y: {
+      suggestedMin: 70,
+      suggestedMax: 170,
+    },
+  };
 
   var tempChart = new Chart(ctx_temp, {
     type: "line",
@@ -1176,7 +1180,7 @@
   var bloodPressureChart = new Chart(ctx_bloodPressure, {
     type: "line",
     data: bloodPressureData,
-    options: tempOption,
+    options: bloodPressureOption,
   });
 
   function updateChartData() {

@@ -3,42 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Chart.js</title>
+  <title>Dynamic Chart with Timestamp</title>
   <!-- Include Chart.js library -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- HTML canvas element to render the chart -->
+  <!-- Create a canvas element to render the chart -->
   <canvas id="myChart" width="400" height="200"></canvas>
 
   <script>
-    // Function to generate a timestamp in the format HH:mm:ss
-    function generateTimestamp() {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const seconds = now.getSeconds().toString().padStart(2, '0');
-      return `${hours}:${minutes}:${seconds}`;
-    }
+    // Initialize the chart data
+    var data = {
+      labels: [],
+      datasets: [{
+        label: 'Data',
+        borderColor: 'rgb(75, 192, 192)',
+        data: [],
+        fill: false
+      }]
+    };
 
-    // Initialize an empty data array for the chart
-    let data = [];
-    let labels = [];
+    // Get the context of the canvas element
+    var ctx = document.getElementById('myChart').getContext('2d');
 
-    // Get the canvas element and create a chart
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
+    // Create the chart with initial data
+    var myChart = new Chart(ctx, {
       type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Dynamic Data',
-          data: data,
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1,
-          fill: false
-        }]
-      },
+      data: data,
       options: {
         scales: {
           x: [{
@@ -49,39 +40,29 @@
       }
     });
 
-    // Function to update the chart data
-    function updateChartData() {
-      // Fetch new data (replace this with your data-fetching logic)
-      const newDataPoint = Math.random() * 100;
+    // Function to update the chart data with a timestamp every 5 seconds
+    function updateChart() {
+      // Get the current timestamp in the format HH:mm:ss
+      var timestamp = new Date().toLocaleTimeString('en-US', {hour12: false});
 
-      // Add the new data point to the data array
-      data.push(newDataPoint);
+      // Add the timestamp to the labels
+      data.labels.push(timestamp);
 
-      // Limit the data array to the last 10 points for better visibility
-      if (data.length > 10) {
-        data.shift();
+      // Add a random data point (replace this with your actual data)
+      data.datasets[0].data.push(Math.random() * 100);
+
+      // Limit the number of data points to show (e.g., last 10)
+      if (data.labels.length > 10) {
+        data.labels.shift();
+        data.datasets[0].data.shift();
       }
-
-      // Generate a timestamp for the new data point
-      const newTimestamp = generateTimestamp();
-
-      // Add the new timestamp to the labels array
-      labels.push(newTimestamp);
-
-      // Limit the labels array to the last 10 timestamps
-      if (labels.length > 10) {
-        labels.shift();
-      }
-
-      // Update the chart dataset with the new data
-      myChart.data.datasets[0].data = data;
 
       // Update the chart
       myChart.update();
     }
 
-    // Update the chart data every 2 seconds
-    setInterval(updateChartData, 2000);
+    // Update the chart every 5 seconds
+    setInterval(updateChart, 5000);
   </script>
 </body>
 </html>

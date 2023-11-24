@@ -67,7 +67,7 @@ signupForm.addEventListener('submit', (e) => {
                 spo2: "",
                 nhiptim: "",
                 sbp: "", // tam truong
-                dbp: "", // tam thu
+                dbp: "",
                 id: user.uid,
             }
             const numColRef = doc(db, "ChiSo/" + signupClass + "/HocSinh", user.uid);
@@ -127,6 +127,13 @@ const monitorAuthState = async () => {
             else {
                 isAdmin = false;
             }
+            const dataSuckhoe = {
+                nhietdocothe: dataToSend.nhietdocothe,
+                spo2: dataToSend.spo2,
+                nhiptim: dataToSend.nhiptim,
+                sbp: dataToSend.sbp, 
+                dbp: dataToSend.dbp,
+            }
             const q = query(collection(db, "DuLieu"), where("id", "==", user.uid));
             const snapshot = await getDocs(q);
             let userData = [];
@@ -141,7 +148,6 @@ const monitorAuthState = async () => {
  
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    dataBMI = data.BMI;
                     dataSPO2 = data.SPO2;
                 });
             });
@@ -159,5 +165,5 @@ monitorAuthState();
 await delay(2000);
 // console.log(dataBMI, dataSPO2);
 await delay(2000);
-export { dataBMI, dataSPO2 };
+export {  };
 
