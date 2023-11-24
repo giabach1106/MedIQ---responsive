@@ -22,10 +22,26 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
-app.get("/admin", function (req, res) {
+app.get('/admin', (req, res) => {
+  // Use path.join to create an absolute path to the HTML file
   res.sendFile(__dirname + "/public/admin.html");
 });
-
+app.get('/huyetap', (req, res) => {
+  // Use path.join to create an absolute path to the HTML file
+  res.sendFile(__dirname + "/public/huyetap.html");
+});
+app.get('/temp', (req, res) => {
+  // Use path.join to create an absolute path to the HTML file
+  res.sendFile(__dirname + "/public/temp.html");
+});
+app.get('/spo2', (req, res) => {
+  // Use path.join to create an absolute path to the HTML file
+  res.sendFile(__dirname + "/public/spo2.html");
+});
+app.get('/heartrate', (req, res) => {
+  // Use path.join to create an absolute path to the HTML file
+  res.sendFile(__dirname + "/public/heartrate.html");
+});
 //listen for a connection
 io.on("connection", function (socket) {
   if (socket.handshake.query.clientType == "web") {

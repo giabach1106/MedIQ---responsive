@@ -64,3 +64,4 @@ const imgSliderPrev = document.querySelector('.img-slider-prev');
 const imgSliderDots = document.querySelector('.img-slider-dots');
 const imgSliderDotsItems = document.querySelectorAll('.img-slider-dot');
 
+getSupportActionBar().hide();

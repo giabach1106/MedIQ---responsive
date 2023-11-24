@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi-VN">
 
@@ -40,8 +39,8 @@
   <script type="text/javascript" src="./js/bootstrap.min.js"></script>
   <script type="text/javascript" src="./js/owl.carousel.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/dashboard.css">
-  
-  <script type="module" src="./js/chatbot.js" ></script>
+
+  <script type="module" src="./js/chatbot.js"></script>
 </head>
 
 <body data-rsssl=1
@@ -92,7 +91,7 @@
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103">
                     <!-- Modal trigger button -->
                     <a class="js" href="#tab6">
-                      Login
+                      Đăng nhập/Đăng xuất
                     </a>
                   </li>
                   <!-- <li id="menu-item-1103"
@@ -131,7 +130,7 @@
               href="#tab5" class="js">Liên hệ</a>
           </li>
           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
-              href="#tab6" class="js">Log in</a>
+              href="#tab6" class="js">Đăng nhập/Đăng xuất</a>
           </li>
           <!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
               href="./admin.html" class="js">Admin</a>
@@ -145,28 +144,28 @@
     <section class="container-login-form forms" id="container-login-form">
       <div class="form login" id="login-form">
         <div class="form-content">
-          <header>Login</header>
+          <header>Đăng nhập</header>
           <form id="log-in">
             <div class="field input-field">
               <input type="email" placeholder="Email" class="input" id="login-email">
             </div>
 
             <div class="field input-field">
-              <input type="password" placeholder="Password" class="password" id="login-password">
+              <input type="password" placeholder="Mật khẩu" class="password" id="login-password">
               <i class='bx bx-hide eye-icon'></i>
             </div>
 
             <div class="form-link">
-              <a href="#" class="forgot-pass">Forgot password?</a>
+              <a href="#" class="forgot-pass"> Quên mật khẩu ?</a>
             </div>
 
             <div class="field button-field">
-              <button id="btnLogin">Login</button>
+              <button id="btnLogin">Đăng nhập</button>
             </div>
           </form>
 
           <div class="form-link">
-            <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+            <span>Chưa có tài khoản ? <a href="#" class="link signup-link">Đăng ký</a></span>
           </div>
         </div>
 
@@ -176,13 +175,13 @@
 
       <div class="form signup" id="signup-form">
         <div class="form-content">
-          <header>Signup</header>
+          <header>Đăng ký</header>
           <form id="sign-up">
             <div class="field input-field">
-              <input type="text" placeholder="Name" class="input" id="signup-name">
+              <input type="text" placeholder="Tên" class="input" id="signup-name">
             </div>
             <div class="field input-field">
-              <input list="classes" placeholder="Class" class="input" id="signup-class">
+              <input list="classes" placeholder="Lớp" class="input" id="signup-class">
               <datalist id="classes">
                 <option value="12 Tin">
                 <option value="12 Hóa 1">
@@ -208,23 +207,23 @@
             </div>
 
             <div class="field input-field">
-              <input type="password" placeholder="Create password" class="password" id="signup-password">
+              <input type="password" placeholder="Tạo mật khẩu" class="password" id="signup-password">
             </div>
             <div class="field button-field">
-              <button>Signup</button>
+              <button>Đăng ký</button>
             </div>
             <div class="form-link">
-              <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+              <span>Đã có tài khoản ? <a href="#" class="link login-link">Đăng nhập</a></span>
             </div>
           </form>
         </div>
       </div>
       <div class="form logout" id="logout-form">
         <div class="form-content">
-          <header>Logout</header>
+          <header id="user">Đăng xuất</header>
           <form id="log-out">
             <div class="field button-field">
-              <button id="btnLogout">Logout</button>
+              <button id="btnLogout">Đăng xuất</button>
             </div>
           </form>
         </div>
@@ -832,10 +831,10 @@
 
   <!-- Admin site -->
   <div id="admin" class="tab-pane">
-    
+
   </div>
-   <!-- Chatbot -->
-   <button class="chatbot-toggler">
+  <!-- Chatbot -->
+  <button class="chatbot-toggler">
     <span class="material-symbols-rounded">mode_comment</span>
     <span class="material-symbols-outlined">close</span>
   </button>
@@ -854,8 +853,8 @@
       <textarea placeholder="Nhập câu hỏi..." spellcheck="false" required></textarea>
       <span id="send-btn" class="material-symbols-rounded">send</span>
     </div>
-  </div>  
-    
+  </div>
+
   <!-- Site footer -->
   <footer class="site-footer">
     <div class="container">
@@ -1037,20 +1036,38 @@
 <script type="module" src="./js/chiso.js"></script>
 <!-- chart -->
 <script>
+  import { dataToSend } from "./js/chiso.js";
+  // nhietdocothe: "",
+  // spo2: "",
+  // nhiptim: "",
+  // sbp: "", // tam truong
+  // dbp: "", // tam thu
+  var temp_val = [];
+  var spo2_val = [];
+  var heart_val = [];
+  var sbp_val = [];
+  var dbp_val = [];
+
+
   var ctx_temp = document.getElementById("tempChart").getContext("2d");
   var ctx_heart = document.getElementById("heartChart").getContext("2d");
   var ctx_SPO2 = document.getElementById("SPO2cChart").getContext("2d");
   var ctx_bloodPressure = document.getElementById("bloodPressureChart").getContext("2d");
 
+  var labels = []
+  function generateTimestamp() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  }
   var bloodPressureData = {
-    labels: [
-      60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
-      26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
-    ],
+    labels: labels,
     datasets: [
       {
         label: "Huyết áp tâm thu (mmHg)",
-        data: [180, 166, 145, 140, 122, 124, 117],
+        data: dbp_val,
         borderColor: "red",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1058,7 +1075,7 @@
       },
       {
         label: "Huyết áp tâm trương (mmHg)",
-        data: [110, 118, 100, 94, 80, 82, 75],
+        data: sbp_val,
         borderColor: "blue",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1070,14 +1087,11 @@
   let diastolicDataValue = bloodPressureData.datasets[1].data[bloodPressureData.datasets[1].data.length - 1];
 
   var tempData = {
-    labels: [
-      60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
-      26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
-    ],
+    labels: labels,
     datasets: [
       {
         label: "Nhiệt độ bề mặt da (°C)",
-        data: [1, 0, 31, 10, 50, 30, 36, 38, 38.2, 34, 39, 37.8],
+        data: temp_val,
         borderColor: "#4152A3",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1089,14 +1103,11 @@
     tempData.datasets[0].data[tempData.datasets[0].data.length - 1];
 
   var heartData = {
-    labels: [
-      60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
-      26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
-    ],
+    labels: labels,
     datasets: [
       {
         label: "Nhịp tim (lần/phút)",
-        data: [80, 69, 120, 70, 50, 60, 66],
+        data: heart_val,
         borderWidth: 1,
         pointBorderWidth: 3,
         borderColor: "#4152A3",
@@ -1108,14 +1119,11 @@
     heartData.datasets[0].data[heartData.datasets[0].data.length - 1];
 
   var SPO2 = {
-    labels: [
-      60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
-      26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
-    ],
+    labels: labels,
     datasets: [
       {
         label: "Nồng độ Oxy trong máu (%)",
-        data: [100, 80, 99, 98, 92],
+        data: spo2_val,
         borderWidth: 1,
         pointBorderWidth: 3,
         borderColor: "#4152A3",
@@ -1171,10 +1179,51 @@
     options: tempOption,
   });
 
-  function setData(dataset, data) {
-    dataset.push(data);
-    dataset.shift();
+  function updateChartData() {
+    const newDataPoint = Math.random() * 100;
+    temp_val.push(dataToSend.nhietdocothe);
+    spo2_val.push(dataToSend.spo2);
+    heart_val.push(dataToSend.nhiptim);
+    sbp_val.push(dataToSend.sbp);
+    dbp_val.push(dataToSend.dbp);
+    if (temp_val > 10) {
+      temp_val.shift();
+    }
+    if (spo2_val > 10) {
+      spo2_val.shift();
+    }
+    if (heart_val > 10) {
+      heart_val.shift();
+    }
+    if (sbp_val > 10) {
+      sbp_val.shift();
+    }
+    if (dbp_val > 10) {
+      dbp_val.shift();
+    }
+    const newTimestamp = generateTimestamp();
+    labels.push(newTimestamp);
+    if (labels.length > 10) {
+      labels.shift();
+    }
+
+    // Update the chart dataset with the new data
+    SPO2Chart.data.datasets[0].data = spo2_val;
+    tempChart.data.datasets[0].data = temp_val;
+    heartChart.data.datasets[0].data = heart_val;
+    bloodPressureChart.data.datasets[0].data = dbp_val;
+    bloodPressureChart.data.datasets[1].data = sbp_val;
+
+    // Update the chart
+    SPO2Chart.update();
+    tempChart.update();
+    heartChart.update();
+    bloodPressureChart.update();
   }
+
+  // Update the chart data every 2 seconds
+  setInterval(updateChartData, 2000);
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

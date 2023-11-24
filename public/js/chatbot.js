@@ -6,7 +6,7 @@ const sendChatBtn = document.querySelector(".chat-input span");
 import { dataBMI, dataSPO2 } from "../js/auth.js";
 let userMessage = null; // Variable to store user's message
  // Paste your API key here
-const API_KEY = "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"; // Paste your API key here
+// const API_KEY = "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";
 const inputInitHeight = chatInput.scrollHeight;
 console.log(dataBMI, dataSPO2);
 const createChatLi = (message, className) => {
@@ -23,10 +23,10 @@ const generateResponse = (chatElement) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const messageElement = chatElement.querySelector("p");
     if(userMessage == "Đánh giá"){
-        userMessage = "Với các chỉ số sức khoẻ sau đây, hãy nhận xét tình trạng sức khoẻ của tôi bằng Tiếng Việt một cách ngắn gọn - chỉ sô SPO2= " + dataSPO2 + " - chỉ số BMI= " + dataBMI; 
+        userMessage = "Với các chỉ số sức khoẻ sau đây, hãy nhận xét tình trạng sức khoẻ của tôi bằng Tiếng Việt một cách ngắn gọn, trả lời một cách tổng quát tối da trong 50 từ - chỉ sô SPO2= " + dataSPO2 + " - thân nhiệt bằng " + 37 + " - nhịp tim bằng" + 89 + " huyết áp tâm trương và thu lần lượt là " + 170 + " và "+ 120; 
     }
     else {userMessage = userMessage + " ,hãy trả lời câu hỏi của tôi bằng Tiếng Việt, càng ngắn càng tốt, ưu tiến giới hạn trong 20 đến 30 từ";}
-    
+
     // Define the properties and message for the API request
     const requestOptions = {
         method: "POST",

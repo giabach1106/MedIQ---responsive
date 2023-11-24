@@ -10,7 +10,6 @@
 
     dataToSend = {...data}
     
-
   });
 
 export  {dataToSend};

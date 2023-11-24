@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Chart.js</title>
+  <!-- Include Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- HTML canvas element to render the chart -->
+  <canvas id="myChart" width="400" height="200"></canvas>
+
+  <script>
+    // Function to generate a timestamp in the format HH:mm:ss
+    function generateTimestamp() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      return `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Initialize an empty data array for the chart
+    let data = [];
+    let labels = [];
+
+    // Get the canvas element and create a chart
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Dynamic Data',
+          data: data,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+          fill: false
+        }]
+      },
+      options: {
+        scales: {
+          x: [{
+            type: 'linear',
+            position: 'bottom'
+          }]
+        }
+      }
+    });
+
+    // Function to update the chart data
+    function updateChartData() {
+      // Fetch new data (replace this with your data-fetching logic)
+      const newDataPoint = Math.random() * 100;
+
+      // Add the new data point to the data array
+      data.push(newDataPoint);
+
+      // Limit the data array to the last 10 points for better visibility
+      if (data.length > 10) {
+        data.shift();
+      }
+
+      // Generate a timestamp for the new data point
+      const newTimestamp = generateTimestamp();
+
+      // Add the new timestamp to the labels array
+      labels.push(newTimestamp);
+
+      // Limit the labels array to the last 10 timestamps
+      if (labels.length > 10) {
+        labels.shift();
+      }
+
+      // Update the chart dataset with the new data
+      myChart.data.datasets[0].data = data;
+
+      // Update the chart
+      myChart.update();
+    }
+
+    // Update the chart data every 2 seconds
+    setInterval(updateChartData, 2000);
+  </script>
+</body>
+</html>

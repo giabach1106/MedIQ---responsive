@@ -2054,14 +2054,13 @@ body.category .pagination a.prev {
 }
 
 .modal .modal-content {
-  background: url(images/modal-1.png) center no-repeat;
   background-size: cover;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 800px;
-  color: #fff;
+  color: #000000;
   height: auto;
 }
 
@@ -4230,3 +4229,7 @@ header h2 {
 }
 /* Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+#bloodPressureChart {
+  padding-top: 150px;
+}
