@@ -13,7 +13,7 @@ const socket = io('', { query: 'clientType=web' });
   //demgiot
 //   tin nhan tu bo xu li trung tam 
   socket.on("/trungtam", (data) => {
-    console.log(data);
+    // console.log(data);
      dataToSend  = {}
 
     dataToSend = {...data}
