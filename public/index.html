@@ -1196,7 +1196,10 @@
   function checkData() {
     document.querySelector("#skinTempValue").innerHTML = tempDataValue;
     document.querySelector("#heartRateValue").innerHTML = heartDataValue;
-    document.querySelector("#SPO2Value").innerHTML = SPO2DataValue;
+    if (document.querySelector("#SPO2Value")) {
+
+      document.querySelector("#SPO2Value").innerHTML = SPO2DataValue;
+    }
     document.querySelector("#systolicValue").innerHTML = systolicDataValue;
     document.querySelector("#diastolicValue").innerHTML = diastolicDataValue;
     // temp
