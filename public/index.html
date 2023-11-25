@@ -1336,7 +1336,7 @@
     heartDataValue = heartData.datasets[0].data[heartData.datasets[0].data.length - 1];
     checkData();
     if (heart_val.length > 10) {
-      sbp_val.shift();
+      heart_val.shift();
     }
     const newTimestamp = generateTimestamp();
     labelHeartRate.push(newTimestamp);
