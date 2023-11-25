@@ -1036,6 +1036,7 @@
 <!-- chart -->
 <script type="module">
   import { dataToSend } from "./js/chiso.js";
+  
   // nhietdocothe: "",
   // spo2: "",
   // nhiptim: "",
@@ -1203,6 +1204,7 @@
     document.querySelector("#systolicValue").innerHTML = systolicDataValue;
     document.querySelector("#diastolicValue").innerHTML = diastolicDataValue;
     // temp
+
     if (tempDataValue >= 40) {
       document.querySelector("#skinTemp").style.backgroundColor = "#bf0000";
       document.querySelector("#skinTemp").style.color = "white";
@@ -1309,10 +1311,10 @@
     systolicDataValue = bloodPressureData.datasets[0].data[bloodPressureData.datasets[0].data.length - 1];
     diastolicDataValue = bloodPressureData.datasets[1].data[bloodPressureData.datasets[1].data.length - 1];
     checkData();
-    if (sbp_val > 10) {
+    if (sbp_val.length > 10) {
       sbp_val.shift();
     }
-    if (dbp_val > 10) {
+    if (dbp_val.length > 10) {
       dbp_val.shift();
     }
     const newTimestamp = generateTimestamp();
@@ -1333,7 +1335,7 @@
     heart_val.push(dataToSend.nhiptim);
     heartDataValue = heartData.datasets[0].data[heartData.datasets[0].data.length - 1];
     checkData();
-    if (heart_val > 10) {
+    if (heart_val.length > 10) {
       sbp_val.shift();
     }
     const newTimestamp = generateTimestamp();
@@ -1351,9 +1353,10 @@
 
   function updateTempChartData() {
     temp_val.push(dataToSend.nhietdocothe);
+    // console.log(temp_val);
     tempDataValue = tempData.datasets[0].data[tempData.datasets[0].data.length - 1];
     checkData();
-    if (temp_val > 10) {
+    if (temp_val.length > 10) {
       temp_val.shift();
     }
     const newTimestamp = generateTimestamp();
@@ -1374,7 +1377,7 @@
     spo2_val.push(dataToSend.spo2);
     SPO2DataValue = SPO2.datasets[0].data[SPO2.datasets[0].data.length - 1];
     checkData();
-    if (spo2_val > 10) {
+    if (spo2_val.length > 10) {
       spo2_val.shift();
     }
     const newTimestamp = generateTimestamp();
