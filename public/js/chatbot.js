@@ -5,7 +5,7 @@ const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 import { dataBMI, dataSPO2 } from "../js/auth.js";
 let userMessage = null; // Variable to store user's message
- // Paste your API key here
+const API_KEY = "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"; // Paste your API key here
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
@@ -39,7 +39,7 @@ const generateResponse = (chatElement) => {
         })
     }
 
-    console.log(requestOptions)
+    // console.log(requestOptions)
     
     // Send POST request to API, get response and set the reponse as paragraph text
     fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
