@@ -25,20 +25,23 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
-// console.log(docSnap.data());
-// const docRef = doc(db, "12A", "2smC3EKTPewBe6dxbuQN");
-// const docSnap = await getDoc(docRef);
-// console.log(docSnap.data());
-//firebase signup
 
 var studentClass = "";
 let studentID = "";
-var dataBMI, dataSPO2;
+var dataSPO2;
 
-
+var user = document.getElementById("user");
+var measure = document.querySelector("#menu-item-1111");
 const signupForm = document.querySelector('#sign-up');
 const logoutForm = document.querySelector('#log-out');
 // console.log(signupForm);
+
+const hideMeasure = () => {
+    measure.style.display = 'none';
+}
+const showMeasure = () => {
+    measure.style.display = 'block';
+}
 signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
     //get user info
@@ -60,8 +63,11 @@ signupForm.addEventListener('submit', (e) => {
             }
             setDoc(dataColRef, data1);
             const data2 = {
-                BMI: "",
-                SPO2: "",
+                nhietdocothe: "",
+                spo2: "",
+                nhiptim: "",
+                sbp: "", // tam truong
+                dbp: "",
                 id: user.uid,
             }
             const numColRef = doc(db, "ChiSo/" + signupClass + "/HocSinh", user.uid);
@@ -81,7 +87,7 @@ loginForm.addEventListener('submit', (e) => {
     const loginPassword = loginForm['login-password'].value;
     signInWithEmailAndPassword(auth, loginEmail, loginPassword)
         .then((userCredential) => {
-            window.location.reload();
+
         })
         .catch((error) => {
             alert("Loi dang nhap");
@@ -101,23 +107,32 @@ const showLoginForm = () => {
     divSignup.style.display = 'block';
     divLogout.style.display = 'none';
 }
-const showLogoutForm = () => {
+const showLogoutForm = (email) => {
     divLogin.style.display = 'none';
     divSignup.style.display = 'none';
     divLogout.style.display = 'block';
+    user.innerHTML = email;
+
 };
 let isAdmin = false;
 const delay = ms => new Promise(res => setTimeout(res, ms));
 const monitorAuthState = async () => {
     onAuthStateChanged(auth, async (user) => {
         if (user) {
-            console.log(user.uid);
+            // console.log(user.email);
             if (user.uid == "dLfsxJfhDdSn3wtxL5swH6o4om42") {
                 isAdmin = true;
                 // window.location.href = "/admin";
             }
             else {
                 isAdmin = false;
+            }
+            const dataSuckhoe = {
+                nhietdocothe: dataToSend.nhietdocothe,
+                spo2: dataToSend.spo2,
+                nhiptim: dataToSend.nhiptim,
+                sbp: dataToSend.sbp, 
+                dbp: dataToSend.dbp,
             }
             const q = query(collection(db, "DuLieu"), where("id", "==", user.uid));
             const snapshot = await getDocs(q);
@@ -130,17 +145,18 @@ const monitorAuthState = async () => {
             const studentQuery = query(collection(db, "ChiSo/" + studentClass + "/HocSinh"), where("id", "==", studentID));
             console.log(studentQuery);
             const unsubscribe = onSnapshot(studentQuery, (querySnapshot) => {
-                // console.log("Data updated!");
+ 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    dataBMI = data.BMI;
+
                     dataSPO2 = data.SPO2;
-                    // console.log(dataBMI, dataSPO2);
-                    // Handle updated data for each document in the query result
                 });
             });
-            showLogoutForm();
+            showLogoutForm(user.email);
+            showMeasure();
         } else {
+            // hide chi so do
+            hideMeasure();
             showLoginForm();
         }
     });
@@ -148,7 +164,7 @@ const monitorAuthState = async () => {
 
 monitorAuthState();
 await delay(2000);
-console.log(dataBMI, dataSPO2);
+// console.log(dataBMI, dataSPO2);
 await delay(2000);
-export { dataBMI, dataSPO2 };
+export {  };
 

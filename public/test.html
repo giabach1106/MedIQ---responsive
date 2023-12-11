@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Boolean with Div</title>
+  <style>
+    #togglingDiv {
+      width: 200px;
+      height: 100px;
+      background-color: #3498db;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="togglingDiv">Toggle Boolean: false</div>
+
+<script>
+  // Boolean variable to toggle
+  let isToggled = false;
+
+  // Function to be executed when the div is clicked
+  function handleToggle() {
+    // Toggle the boolean value
+    isToggled = !isToggled;
+
+    // Update the text content of the div
+    const togglingDiv = document.getElementById('togglingDiv');
+    togglingDiv.textContent = `Toggle Boolean: ${isToggled}`;
+  }
+
+  // Get the div element
+  const togglingDiv = document.getElementById('togglingDiv');
+
+  // Add a click event listener to the div
+  togglingDiv.addEventListener('click', handleToggle);
+</script>
+
+</body>
+</html>

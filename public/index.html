@@ -41,7 +41,6 @@
   <link rel="stylesheet" type="text/css" href="./css/dashboard.css">
 
   <script type="module" src="./js/chatbot.js"></script>
-  <!-- <script type="module" src="./js/test.js"></script> -->
 </head>
 
 <body data-rsssl=1
@@ -72,7 +71,7 @@
                   </li>
                   <li id="menu-item-955"
                     class="mega menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-955">
-                    <a class="js">Giới thiệu</a>
+                    <a class="js" href="#tab2">Giới thiệu</a>
 
                   </li>
                   <li id="menu-item-1111"
@@ -92,7 +91,7 @@
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1103">
                     <!-- Modal trigger button -->
                     <a class="js" href="#tab6">
-                      Login
+                      Đăng nhập/Đăng xuất
                     </a>
                   </li>
                   <!-- <li id="menu-item-1103"
@@ -122,16 +121,16 @@
           </li>
 
           <li id="menu-item-1111"
-            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"
-            id="sustag"><a href="#tab3" class="js" id="sus">Các chỉ số đo</a>
+            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111"><a
+              href="#tab3" class="js">Các chỉ số đo</a>
           <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1111">
             <a href="#tab4" class="js">Tin tức</a>
           </li>
           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
-              href="#tab5">Liên hệ</a>
+              href="#tab5" class="js">Liên hệ</a>
           </li>
           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
-              href="#tab6" class="js">Log in</a>
+              href="#tab6" class="js">Đăng nhập/Đăng xuất</a>
           </li>
           <!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1106"><a
               href="./admin.html" class="js">Admin</a>
@@ -145,28 +144,28 @@
     <section class="container-login-form forms" id="container-login-form">
       <div class="form login" id="login-form">
         <div class="form-content">
-          <header>Login</header>
+          <header>Đăng nhập</header>
           <form id="log-in">
             <div class="field input-field">
               <input type="email" placeholder="Email" class="input" id="login-email">
             </div>
 
             <div class="field input-field">
-              <input type="password" placeholder="Password" class="password" id="login-password">
+              <input type="password" placeholder="Mật khẩu" class="password" id="login-password">
               <i class='bx bx-hide eye-icon'></i>
             </div>
 
             <div class="form-link">
-              <a href="#" class="forgot-pass">Forgot password?</a>
+              <a href="#" class="forgot-pass"> Quên mật khẩu ?</a>
             </div>
 
             <div class="field button-field">
-              <button id="btnLogin">Login</button>
+              <button id="btnLogin">Đăng nhập</button>
             </div>
           </form>
 
           <div class="form-link">
-            <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+            <span>Chưa có tài khoản ? <a href="#" class="link signup-link">Đăng ký</a></span>
           </div>
         </div>
 
@@ -176,13 +175,13 @@
 
       <div class="form signup" id="signup-form">
         <div class="form-content">
-          <header>Signup</header>
+          <header>Đăng ký</header>
           <form id="sign-up">
             <div class="field input-field">
-              <input type="text" placeholder="Name" class="input" id="signup-name">
+              <input type="text" placeholder="Tên" class="input" id="signup-name">
             </div>
             <div class="field input-field">
-              <input list="classes" placeholder="Class" class="input" id="signup-class">
+              <input list="classes" placeholder="Lớp" class="input" id="signup-class">
               <datalist id="classes">
                 <option value="12 Tin">
                 <option value="12 Hóa 1">
@@ -208,23 +207,23 @@
             </div>
 
             <div class="field input-field">
-              <input type="password" placeholder="Create password" class="password" id="signup-password">
+              <input type="password" placeholder="Tạo mật khẩu" class="password" id="signup-password">
             </div>
             <div class="field button-field">
-              <button>Signup</button>
+              <button>Đăng ký</button>
             </div>
             <div class="form-link">
-              <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+              <span>Đã có tài khoản ? <a href="#" class="link login-link">Đăng nhập</a></span>
             </div>
           </form>
         </div>
       </div>
       <div class="form logout" id="logout-form">
         <div class="form-content">
-          <header>Logout</header>
+          <header id="user">Đăng xuất</header>
           <form id="log-out">
             <div class="field button-field">
-              <button id="btnLogout">Logout</button>
+              <button id="btnLogout">Đăng xuất</button>
             </div>
           </form>
         </div>
@@ -693,9 +692,9 @@
                   <h3>Huyết áp:</h3>
                 </div>
                 <div>
-                  <div id="systolicValue">120</div>
+                  <div id="systolicValue"></div>
                   <p>/</p>
-                  <div id="diastolicValue">90</div>
+                  <div id="diastolicValue"></div>
                   <p>mmHg</p>
                 </div>
               </div>
@@ -709,8 +708,8 @@
                   <h3>Tốc độ nhỏ giọt:</h3>
                 </div>
                 <div>
-                  <div id="dropSpeedValue">60</div>
-                  <p>giọt/phút</p>
+                  <div id="dropSpeedValue"></div>
+                  <p id="dropSpeedData">giọt/phút</p>
                 </div>
               </div>
             </a>
@@ -725,7 +724,7 @@
                   <h3>Nhịp tim:</h3>
                 </div>
                 <div>
-                  <div id="heartRateValue">80</div>
+                  <div id="heartRateValue"></div>
                   <p>bpm</p>
                 </div>
               </div>
@@ -739,7 +738,7 @@
                   <h3>SPO2:</h3>
                 </div>
                 <div>
-                  <div id="SPO2Value">89</div>
+                  <div id="SPO2Value"></div>
                   <p>%</p>
                 </div>
               </div>
@@ -755,7 +754,7 @@
                   <h3>Nhiệt độ da:</h3>
                 </div>
                 <div>
-                  <div id="skinTempValue">39</div>
+                  <div id="skinTempValue"></div>
                   <p>°C</p>
                 </div>
               </div>
@@ -805,7 +804,7 @@
           <div class="col-md-8">
             <h1 class="page-title">Liên hệ</h1>
             <div class="page-simple">
-              <h4><strong><span style="color: #008000;"> Giáo viên hướng dẫn</span></strong></h4>
+              <h4><strong><span style="color: #008000;"> Giáo viên hướng dẫn</span></strong></h4>
               <h5>Ms. Lê Thị Thuý</h5>
               <h5>Email: lethithuy111191@gmail.com</h5>
               <h5>Tel: 0383328779</h5>
@@ -831,7 +830,9 @@
   </div>
 
   <!-- Admin site -->
+  <div id="admin" class="tab-pane">
 
+  </div>
   <!-- Chatbot -->
   <button class="chatbot-toggler">
     <span class="material-symbols-rounded">mode_comment</span>
@@ -1026,7 +1027,6 @@
       $(this).siblings().slideToggle();
       $(this).toggleClass('active');
       $('.mobile-menu li .sub-menu').toggleClass('active');
-
     });
   })
 </script>
@@ -1034,20 +1034,56 @@
 
 <script type="module" src="./js/chiso.js"></script>
 <!-- chart -->
-<script>
+<script type="module">
+  import { dataToSend } from "./js/chiso.js";
+  
+  // nhietdocothe: "",
+  // spo2: "",
+  // nhiptim: "",
+  // sbp: "", // tam truong
+  // dbp: "", // tam thu
+  //get id
+  console.log(dataToSend);
+  var bloodPressure = document.getElementById("bloodPressure");
+  var dropSpeed = document.getElementById("dropSpeedData");
+  var heartRate = document.getElementById("hearRate");
+  var Spo2 = document.getElementById("SPO2");
+  var skinTemp = document.getElementById("skinTemp");
+
+  //dataset
+  var temp_val = [0];
+  var spo2_val = [0];
+  var heart_val = [0];
+  var sbp_val = [0];
+  var dbp_val = [0];
   var ctx_temp = document.getElementById("tempChart").getContext("2d");
   var ctx_heart = document.getElementById("heartChart").getContext("2d");
   var ctx_SPO2 = document.getElementById("SPO2cChart").getContext("2d");
   var ctx_bloodPressure = document.getElementById("bloodPressureChart").getContext("2d");
+  let tempDataValue = "";
+  let SPO2DataValue = "";
+  let heartDataValue = "";
+  let systolicDataValue = "";
+  let diastolicDataValue = "";
+
+  //labels
+  var labelBloodPressure = [];
+  var labelSPO2 = [];
+  var labelHeartRate = [];
+  var labelTemp = [];
+  function generateTimestamp() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  }
   var bloodPressureData = {
-    labels: [
-      60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
-      26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
-    ],
+    labels: labelBloodPressure,
     datasets: [
       {
         label: "Huyết áp tâm thu (mmHg)",
-        data: datasus1,
+        data: dbp_val,
         borderColor: "red",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1055,7 +1091,7 @@
       },
       {
         label: "Huyết áp tâm trương (mmHg)",
-        data: datasus2,
+        data: sbp_val,
         borderColor: "blue",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1063,18 +1099,13 @@
       },
     ],
   };
-  let systolicDataValue = bloodPressureData.datasets[0].data[bloodPressureData.datasets[0].data.length - 1];
-  let diastolicDataValue = bloodPressureData.datasets[1].data[bloodPressureData.datasets[1].data.length - 1];
 
   var tempData = {
-    labels: [
-      60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
-      26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
-    ],
+    labels: labelTemp,
     datasets: [
       {
         label: "Nhiệt độ bề mặt da (°C)",
-        data: datasus3,
+        data: temp_val,
         borderColor: "#4152A3",
         borderWidth: 1,
         pointBorderWidth: 3,
@@ -1082,18 +1113,14 @@
       },
     ],
   };
-  let tempDataValue =
-    tempData.datasets[0].data[tempData.datasets[0].data.length - 1];
+  
 
   var heartData = {
-    labels: [
-      60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
-      26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
-    ],
+    labels: labelHeartRate,
     datasets: [
       {
         label: "Nhịp tim (lần/phút)",
-        data: [80, 69, 120, 70, 50, 60, 66],
+        data: heart_val,
         borderWidth: 1,
         pointBorderWidth: 3,
         borderColor: "#4152A3",
@@ -1101,18 +1128,13 @@
       },
     ],
   };
-  let heartDataValue =
-    heartData.datasets[0].data[heartData.datasets[0].data.length - 1];
 
   var SPO2 = {
-    labels: [
-      60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28,
-      26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0,
-    ],
+    labels: labelSPO2,
     datasets: [
       {
         label: "Nồng độ Oxy trong máu (%)",
-        data: [100, 80, 99, 98, 92],
+        data: spo2_val,
         borderWidth: 1,
         pointBorderWidth: 3,
         borderColor: "#4152A3",
@@ -1120,8 +1142,6 @@
       },
     ],
   };
-  let SP02DataValue =
-    SPO2.datasets[0].data[SPO2.datasets[0].data.length - 1];
 
   var tempOption = {
     // responsive: false,
@@ -1142,6 +1162,13 @@
     y: {
       suggestedMin: 80,
       suggestedMax: 100,
+    },
+  };
+  var bloodPressureOption = {
+    // responsive: false,
+    y: {
+      suggestedMin: 70,
+      suggestedMax: 170,
     },
   };
 
@@ -1165,123 +1192,214 @@
   var bloodPressureChart = new Chart(ctx_bloodPressure, {
     type: "line",
     data: bloodPressureData,
-    options: tempOption,
+    options: bloodPressureOption,
   });
+  function checkData() {
+    document.querySelector("#skinTempValue").innerHTML = tempDataValue;
+    document.querySelector("#heartRateValue").innerHTML = heartDataValue;
+    if (document.querySelector("#SPO2Value")) {
 
-  function setData(dataset, data) {
-    dataset.push(data);
-    dataset.shift();
+      document.querySelector("#SPO2Value").innerHTML = SPO2DataValue;
+    }
+    document.querySelector("#systolicValue").innerHTML = systolicDataValue;
+    document.querySelector("#diastolicValue").innerHTML = diastolicDataValue;
+    // temp
+
+    if (tempDataValue >= 40) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#bf0000";
+      document.querySelector("#skinTemp").style.color = "white";
+    } else if (tempDataValue >= 39) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#f53131";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 38) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#f06969";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 37.5) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#ffbf00";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else if (tempDataValue >= 36) {
+      document.querySelector("#skinTemp").style.backgroundColor = "#34b257";
+      document.querySelector("#skinTemp").style.color = "black";
+    } else {
+      document.querySelector("#skinTemp").style.backgroundColor = "#3c096c";
+      document.querySelector("#skinTemp").style.color = "white";
+    }
+
+    // heart
+    if (heartDataValue >= 100) {
+      document.querySelector("#heartRate").style.backgroundColor = "#bf0000";
+      document.querySelector("#heartRate").style.color = "white";
+    } else if (heartDataValue >= 80) {
+      document.querySelector("#heartRate").style.backgroundColor = "#f53131";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 68) {
+      document.querySelector("#heartRate").style.backgroundColor = "#f06969";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 62) {
+      document.querySelector("#heartRate").style.backgroundColor = "#ffbf00";
+      document.querySelector("#heartRate").style.color = "black";
+    } else if (heartDataValue >= 54) {
+      document.querySelector("#heartRate").style.backgroundColor = "#34b257";
+      document.querySelector("#heartRate").style.color = "black";
+    } else {
+      document.querySelector("#heartRate").style.backgroundColor = "#3c096c";
+      document.querySelector("#heartRate").style.color = "white";
+    }
+
+    // SPO2
+    if (SPO2DataValue <= 88) {
+      document.querySelector("#SPO2").style.backgroundColor = "#bf0000";
+      document.querySelector("#SPO2").style.color = "white";
+    } else if (SPO2DataValue <= 92) {
+      document.querySelector("#SPO2").style.backgroundColor = "#f53131";
+      document.querySelector("#SPO2").style.color = "black";
+    } else if (SPO2DataValue <= 95) {
+      document.querySelector("#SPO2").style.backgroundColor = "#ffbf00";
+      document.querySelector("#SPO2").style.color = "black";
+    } else if (SPO2DataValue <= 100) {
+      document.querySelector("#SPO2").style.backgroundColor = "#34b257";
+      document.querySelector("#SPO2").style.color = "black";
+    } else {
+      document.querySelector("#SPO2").style.backgroundColor = "#3c096c";
+      document.querySelector("#SPO2").style.color = "white";
+      document.querySelector("#SPO2").innerHTML = "N/A";
+    }
+
+    // blood pressure
+    if (systolicDataValue - diastolicDataValue <= 20) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#bf0000";
+      document.querySelector("#bloodPressure").style.color = "white";
+    } else if (systolicDataValue >= 180 || diastolicDataValue >= 110) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#f53131";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 160 || diastolicDataValue >= 100) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#f06969";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 140 || diastolicDataValue >= 90) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#ffbf00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 130 || diastolicDataValue >= 85) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#B6BA00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 120 || diastolicDataValue >= 80) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#4E8B00";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue >= 90 || diastolicDataValue >= 60) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#34B257";
+      document.querySelector("#bloodPressure").style.color = "black";
+    } else if (systolicDataValue < 90 || diastolicDataValue < 60) {
+      document.querySelector("#bloodPressure").style.backgroundColor =
+        "#3c096c";
+      document.querySelector("#bloodPressure").style.color = "white";
+    }
   }
-</script>
+  // temp_val.push(dataToSend.nhietdocothe);
+  //   spo2_val.push(dataToSend.spo2);
+  //   heart_val.push(dataToSend.nhiptim);
+  //   sbp_val.push(dataToSend.sbp);
+  //   dbp_val.push(dataToSend.dbp);
+  function updateBloodPressureChartData() {
+    sbp_val.push(dataToSend.sbp);
+    dbp_val.push(dataToSend.dbp);
+    systolicDataValue = bloodPressureData.datasets[0].data[bloodPressureData.datasets[0].data.length - 1];
+    diastolicDataValue = bloodPressureData.datasets[1].data[bloodPressureData.datasets[1].data.length - 1];
+    checkData();
+    if (sbp_val.length > 10) {
+      sbp_val.shift();
+    }
+    if (dbp_val.length > 10) {
+      dbp_val.shift();
+    }
+    const newTimestamp = generateTimestamp();
+    labelBloodPressure.push(newTimestamp);
+    if (labelBloodPressure.length > 10) {
+      labelBloodPressure.shift();
+    }
 
+    bloodPressureChart.data.datasets[0].data = dbp_val;
+    bloodPressureChart.data.datasets[1].data = sbp_val;
+    bloodPressureChart.update();
+  }
+
+  // Update the chart data every 2 seconds
+  setInterval(updateBloodPressureChartData, 2000);
+  // get data to show in Index
+  function updateHeartRateChartData() {
+    heart_val.push(dataToSend.nhiptim);
+    heartDataValue = heartData.datasets[0].data[heartData.datasets[0].data.length - 1];
+    checkData();
+    if (heart_val.length > 10) {
+      heart_val.shift();
+    }
+    const newTimestamp = generateTimestamp();
+    labelHeartRate.push(newTimestamp);
+    if (labelHeartRate.length > 10) {
+      labelHeartRate.shift();
+    }
+
+    heartChart.data.datasets[0].data = heart_val;
+    heartChart.update();
+  }
+
+  // Update the chart data every 2 seconds
+  setInterval(updateHeartRateChartData, 2000);
+
+  function updateTempChartData() {
+    temp_val.push(dataToSend.nhietdocothe);
+    // console.log(temp_val);
+    tempDataValue = tempData.datasets[0].data[tempData.datasets[0].data.length - 1];
+    checkData();
+    if (temp_val.length > 10) {
+      temp_val.shift();
+    }
+    const newTimestamp = generateTimestamp();
+    labelTemp.push(newTimestamp);
+    if (labelTemp.length > 10) {
+      labelTemp.shift();
+    }
+
+    tempChart.data.datasets[0].data = temp_val;
+    tempChart.update();
+  }
+  
+
+  // Update the chart data every 2 seconds
+  setInterval(updateTempChartData, 2000);
+
+  function updateSPO2ChartData() {
+    spo2_val.push(dataToSend.spo2);
+    SPO2DataValue = SPO2.datasets[0].data[SPO2.datasets[0].data.length - 1];
+    checkData();
+    if (spo2_val.length > 10) {
+      spo2_val.shift();
+    }
+    const newTimestamp = generateTimestamp();
+    labelSPO2.push(newTimestamp);
+    if (labelSPO2.length > 10) {
+      labelSPO2.shift();
+    }
+
+    SPO2Chart.data.datasets[0].data = spo2_val;
+    SPO2Chart.update();
+  }
+  
+  setInterval(updateSPO2ChartData, 2000);
+
+  function updateDropSpeedData() {
+    dropSpeedData.innerHTML = dataToSend.demgiot + " giọt/phút";
+  }
+  setInterval(updateDropSpeedData, 2000);
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<!-- Chart -->
-<script>
-  // get data to show in Index
-  document.querySelector("#skinTempValue").innerHTML = tempDataValue;
-  document.querySelector("#heartRateValue").innerHTML = heartDataValue;
-  document.querySelector("#SPO2Value").innerHTML = SP02DataValue;
-  document.querySelector("#systolicValue").innerHTML = systolicDataValue;
-  document.querySelector("#diastolicValue").innerHTML = diastolicDataValue;
-  // chage the color due the value
-
-  // temp
-  if (tempDataValue >= 40) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#bf0000";
-    document.querySelector("#skinTemp").style.color = "white";
-  } else if (tempDataValue >= 39) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#f53131";
-    document.querySelector("#skinTemp").style.color = "black";
-  } else if (tempDataValue >= 38) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#f06969";
-    document.querySelector("#skinTemp").style.color = "black";
-  } else if (tempDataValue >= 37.5) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#ffbf00";
-    document.querySelector("#skinTemp").style.color = "black";
-  } else if (tempDataValue >= 36) {
-    document.querySelector("#skinTemp").style.backgroundColor = "#34b257";
-    document.querySelector("#skinTemp").style.color = "black";
-  } else {
-    document.querySelector("#skinTemp").style.backgroundColor = "#3c096c";
-    document.querySelector("#skinTemp").style.color = "white";
-  }
-
-  // heart
-  if (heartDataValue >= 100) {
-    document.querySelector("#heartRate").style.backgroundColor = "#bf0000";
-    document.querySelector("#heartRate").style.color = "white";
-  } else if (heartDataValue >= 80) {
-    document.querySelector("#heartRate").style.backgroundColor = "#f53131";
-    document.querySelector("#heartRate").style.color = "black";
-  } else if (heartDataValue >= 68) {
-    document.querySelector("#heartRate").style.backgroundColor = "#f06969";
-    document.querySelector("#heartRate").style.color = "black";
-  } else if (heartDataValue >= 62) {
-    document.querySelector("#heartRate").style.backgroundColor = "#ffbf00";
-    document.querySelector("#heartRate").style.color = "black";
-  } else if (heartDataValue >= 54) {
-    document.querySelector("#heartRate").style.backgroundColor = "#34b257";
-    document.querySelector("#heartRate").style.color = "black";
-  } else {
-    document.querySelector("#heartRate").style.backgroundColor = "#3c096c";
-    document.querySelector("#heartRate").style.color = "white";
-  }
-
-  // SPO2
-  if (SP02DataValue <= 88) {
-    document.querySelector("#SPO2").style.backgroundColor = "#bf0000";
-    document.querySelector("#SPO2").style.color = "white";
-  } else if (SP02DataValue <= 92) {
-    document.querySelector("#SPO2").style.backgroundColor = "#f53131";
-    document.querySelector("#SPO2").style.color = "black";
-  } else if (SP02DataValue <= 95) {
-    document.querySelector("#SPO2").style.backgroundColor = "#ffbf00";
-    document.querySelector("#SPO2").style.color = "black";
-  } else if (SP02DataValue <= 100) {
-    document.querySelector("#SPO2").style.backgroundColor = "#34b257";
-    document.querySelector("#SPO2").style.color = "black";
-  } else {
-    document.querySelector("#SPO2").style.backgroundColor = "#3c096c";
-    document.querySelector("#SPO2").style.color = "white";
-    document.querySelector("#SPO2Num").innerHTML = "N/A";
-  }
-
-  // blood pressure
-  if (systolicDataValue - diastolicDataValue <= 20) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#bf0000";
-    document.querySelector("#bloodPressure").style.color = "white";
-  } else if (systolicDataValue >= 180 || diastolicDataValue >= 110) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#f53131";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 160 || diastolicDataValue >= 100) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#f06969";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 140 || diastolicDataValue >= 90) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#ffbf00";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 130 || diastolicDataValue >= 85) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#B6BA00";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 120 || diastolicDataValue >= 80) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#4E8B00";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue >= 90 || diastolicDataValue >= 60) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#34B257";
-    document.querySelector("#bloodPressure").style.color = "black";
-  } else if (systolicDataValue < 90 || diastolicDataValue < 60) {
-    document.querySelector("#bloodPressure").style.backgroundColor =
-      "#3c096c";
-    document.querySelector("#bloodPressure").style.color = "white";
-  }
-</script>
 <!-- Login script -->
 <script type="module" src="./js/auth.js">
 </script>
