@@ -10,7 +10,7 @@
 #include <EEPROM.h>
 
 //------------------------------------------
-// #define DEBUG
+#define DEBUG
 //------------------------------------------
 // DEFINE PIN
 #define SPI_CE_PIN 9
@@ -132,6 +132,11 @@ void handle_data_nrf() {
     EEPROM.write(2, sbp >> 8);
     EEPROM.write(3, dbp);
     EEPROM.write(4, dbp >> 8);
+    Serial.print("sbp");
+    Serial.print(sbp);
+    Serial.print(" dbp");
+    Serial.print(dbp);
+    Serial.println();
   }
   //----------------------------------------
   // nhiet do + nhip tim + spo2
@@ -148,6 +153,13 @@ void handle_data_nrf() {
     EEPROM.write(8, nhiptim >> 8);
     EEPROM.write(9, spo2);
     EEPROM.write(10, spo2 >> 8);
+     Serial.print("nhiptim");
+    Serial.print(nhiptim);
+    Serial.print(" nhietDoCoThe");
+    Serial.print(nhietDoCoThe);
+    Serial.print(" spo2");
+    Serial.print(spo2);
+    Serial.println();
   }
 
   //----------------------------------------
@@ -157,7 +169,10 @@ void handle_data_nrf() {
     demGiot = Data_nhan[1];
     EEPROM.write(11, demGiot);
     EEPROM.write(12, demGiot >> 8);
-    Serial.println(demGiot);
+    Serial.print("demGiot");
+    Serial.print(demGiot);
+    Serial.println();
+
   }
 
   //   // gửi dữ liệu lên esp
@@ -172,7 +187,7 @@ void handle_data_nrf() {
  */
 void sendDataToEsp() {
   String data = "";
-  data += String(sbp, 5) + "," + String(dbp, 5) + "," + String(nhietDoCoThe, 5) + "," + String(nhiptim, 5) + "," + String(spo2, 5) + "," + String(demGiot, 5);
+  data += String(sbp) + "," + String(dbp) + "," + String(nhietDoCoThe) + "," + String(nhiptim) + "," + String(spo2) + "," + String(demGiot);
   // data: 120  ,80  ,36,80  ,98  ,0
 #ifdef DEBUG
   Serial.println(data);
@@ -193,9 +208,9 @@ void sendDataToEsp() {
 void displayData() {
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("SBP: ");
+  lcd.print("SBP:");
   lcd.print(sbp);
-  lcd.print("| DBP: ");
+  lcd.print(" DBP:");
   lcd.print(dbp);
   lcd.setCursor(0, 1);
   lcd.print("TEMP: ");
